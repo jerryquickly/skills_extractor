@@ -1,0 +1,20 @@
+{% extends '_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+{% if filename %}
+  <div>{{filename}} has been uploaded successfully.</div>
+{% endif %}
+
+<h1>Upload new File</h1>
+<form class="form" role="form" method="post" enctype="multipart/form-data"  action="">
+  {{ form.csrf_token }}
+  {{ form.hidden_tag() }}
+  {{ wtf.form_errors(form, hiddens="only") }}
+
+  <input type=file name=file>
+
+  <button class="btn btn-success" type="submit">Upload!</button>
+</form>
+
+{% endblock %}
