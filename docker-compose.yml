@@ -20,7 +20,7 @@ services:
       - DATABASE_TEST_URL=postgres://postgres:postgres@web-db:5432/users_test
       - SECRET_KEY=change_me_in_prod
     depends_on:
-      - web-db
+      - elasticsearch
 
   web-db:
     container_name: web-db
@@ -32,3 +32,15 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
+  elasticsearch:
+    container_name: elasticsearch
+    build:
+      context: ./project/server/elasticsearch
+      dockerfile: Dockerfile
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      

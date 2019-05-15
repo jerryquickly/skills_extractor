@@ -14,6 +14,12 @@ class BaseConfig(object):
     SECRET_KEY = os.getenv("SECRET_KEY", "my_precious")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = False
+    UPLOAD_FOLDER = os.environ.get(
+        "UPLOAD_FOLDER", os.path.join(basedir, "uploads")
+    )
+    MAX_CONTENT_LENGTH = os.environ.get(
+        "MAX_CONTENT_LENGTH", 100 * 1024 * 1024
+    )
 
 
 class DevelopmentConfig(BaseConfig):
@@ -24,7 +30,7 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL", "sqlite:///{0}".format(os.path.join(basedir, "dev.db"))
     )
-
+    
 
 class TestingConfig(BaseConfig):
     """Testing configuration."""

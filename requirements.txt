@@ -10,3 +10,6 @@ Flask-SQLAlchemy==2.3.2
 Flask-Testing==0.7.1
 Flask-WTF==0.14.2
 psycopg2==2.7.4
+
+# Elasticsearch 7.x
+elasticsearch>=7.0.0,<8.0.0
