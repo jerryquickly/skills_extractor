@@ -14,12 +14,10 @@ class BaseConfig(object):
     SECRET_KEY = os.getenv("SECRET_KEY", "my_precious")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = False
-    UPLOAD_FOLDER = os.environ.get(
-        "UPLOAD_FOLDER", os.path.join(basedir, "uploads")
-    )
-    MAX_CONTENT_LENGTH = os.environ.get(
-        "MAX_CONTENT_LENGTH", 100 * 1024 * 1024
-    )
+    UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "uploads")
+    MAX_CONTENT_LENGTH = os.getenv("MAX_CONTENT_LENGTH", 100 * 1024 * 1024)
+    CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "amqp://localhost:5672")
+    CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "amqp://localhost:5672")
 
 
 class DevelopmentConfig(BaseConfig):
@@ -30,6 +28,7 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL", "sqlite:///{0}".format(os.path.join(basedir, "dev.db"))
     )
+    ELASTICSEARCH_INDEX="dev-index"
     
 
 class TestingConfig(BaseConfig):
@@ -39,7 +38,7 @@ class TestingConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "sqlite:///"
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_TEST_URL", "sqlite:///")
     TESTING = True
-
+    ELASTICSEARCH_INDEX="test-index"
 
 class ProductionConfig(BaseConfig):
     """Production configuration."""
@@ -50,3 +49,4 @@ class ProductionConfig(BaseConfig):
         "sqlite:///{0}".format(os.path.join(basedir, "prod.db")),
     )
     WTF_CSRF_ENABLED = True
+    ELASTICSEARCH_INDEX="prod-index"

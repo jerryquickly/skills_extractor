@@ -13,3 +13,6 @@ psycopg2==2.7.4
 
 # Elasticsearch 7.x
 elasticsearch>=7.0.0,<8.0.0
+
+celery==4.3
+PyPDF2==1.26.0

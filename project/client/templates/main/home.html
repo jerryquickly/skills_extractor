@@ -4,7 +4,8 @@
 <div>
   <h1>Welcome!</h1>
   <hr><br>
-  <p><a href="/upload">Upload file to extract skills</a></p>
+  <p><a href="{{ url_for('extractor.document_upload') }}">Upload file to extract skills</a></p>
+  <p><a href="{{ url_for('extractor.mydocuments') }}">View your documents</a></p>
 </div>
 
 {% endblock %}

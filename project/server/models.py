@@ -51,13 +51,15 @@ class Document(db.Model):
     title = db.Column(db.String(1000), nullable=False)
     created_on = db.Column(db.DateTime, nullable=False)
     created_by = db.Column(db.Integer, nullable=True) #User.id
-    path = db.Column(db.String(1000), nullable=True)
+    filename = db.Column(db.String(1000), nullable=True)
+    path = db.Column(db.String(1255), nullable=True)
 
-    def __init__(self, content_type, title, created_by, path):
+    def __init__(self, content_type, title, created_by, filename, path):
         self.content_type = content_type
         self.title = title
         self.created_on = datetime.datetime.now()
         self.created_by = created_by
+        self.filename = filename
         self.path = path
 
     def get_id(self):
@@ -65,3 +67,9 @@ class Document(db.Model):
 
     def __repr__(self):
         return "<Document {0}>".format(self.title)
+    
+    def set_content(self, content):
+        self.content = content
+
+    def get_content(self):
+        return self.content

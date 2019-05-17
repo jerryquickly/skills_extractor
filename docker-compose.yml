@@ -43,4 +43,15 @@ services:
       - 9300:9300
     environment:
       - discovery.type=single-node
+
+  rabbitmq:
+    container_name: rabbitmq
+    hostname:  my-rabbitmq
+    build:
+      context: ./project/server/rabbitmq
+      dockerfile: Dockerfile
+    ports:
+      - 5672:5672
+    environment:
+      - discovery.type=single-node
       

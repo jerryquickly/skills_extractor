@@ -16,6 +16,11 @@ user_blueprint = Blueprint("user", __name__)
 def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None:
+            flash("You already have an account. Please sign in", "danger")
+            return render_template("user/login.html", title="Please Login", form=form)
+
         user = User(email=form.email.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -23,7 +28,7 @@ def register():
         login_user(user)
 
         flash("Thank you for registering.", "success")
-        return redirect(url_for("user.members"))
+        return redirect(url_for("extractor.mydocuments"))
 
     return render_template("user/register.html", form=form)
 
@@ -38,7 +43,7 @@ def login():
         ):
             login_user(user)
             flash("You are logged in. Welcome!", "success")
-            return redirect(url_for("user.members"))
+            return redirect(url_for("extractor.mydocuments"))
         else:
             flash("Invalid email and/or password.", "danger")
             return render_template("user/login.html", form=form)

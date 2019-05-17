@@ -13,6 +13,10 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+from celery import Celery
+from project.server.factory import init_celery
+
+celery = Celery('skills_extractor', broker='amqp://localhost:5672')
 
 # instantiate the extensions
 login_manager = LoginManager()
@@ -37,6 +41,8 @@ def create_app(script_info=None):
         "APP_SETTINGS", "project.server.config.ProductionConfig"
     )
     app.config.from_object(app_settings)
+
+    init_celery(app=app, celery=celery)
 
     #logging
     handler = RotatingFileHandler('app.log', maxBytes=100000, backupCount=1)

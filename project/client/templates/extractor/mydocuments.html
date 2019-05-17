@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+{% if documents|length == 0 %}
+  <div>You haven't uploaded/created document yet. <a href="{{ url_for('extractor.document_upload') }}">Upload your</a></div>
+{% endif %}
+
+{% if documents|length > 0 %}
+    <h1>Your documents</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">File</th>
+                <th scope="col">Upload on</th>
+            </tr>
+        </thead>
+        {% for i in range(documents|length)%}
+            <tr>
+                <td>{{i + 1}}</td>
+                <td>
+                    <a href="{{ url_for('extractor.download_my_document', id=documents[i].id)}}">{{documents[i].title}}</a>
+                </td>
+                <td>{{documents[i].created_on}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% endblock %}

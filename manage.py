@@ -9,6 +9,7 @@ from flask.cli import FlaskGroup
 
 from project.server import create_app, db
 from project.server.models import User
+from project.server import celery
 import subprocess
 import sys
 

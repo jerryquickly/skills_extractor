@@ -1,1 +1,5 @@
 app.log
+app.log.*
+venv/
+instance/
+__pycache__
