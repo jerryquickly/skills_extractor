@@ -13,7 +13,7 @@ from werkzeug.datastructures import CombinedMultiDict
 from project.server import bcrypt, db
 from project.server.models import User, Document
 from project.server.extractor.forms import UploadForm
-from project.server.extractor.services import DocumentService, sum_ne
+from project.server.extractor.services import DocumentService, search_index_skills
 
 
 extractor_blueprint = Blueprint("extractor", __name__)
@@ -62,8 +62,6 @@ def document_upload():
                 created_by=current_user.id, filename=filename, path=save_to)
             app.logger.info("Call index_and_extract_skills asynch")
             documentService.index_and_extract_skills_async(document.id)
-            
-            sum_ne.delay(2, 3)
 
             return render_template("extractor/upload.html", filename=filename, form=form)
      
@@ -74,10 +72,15 @@ def document_upload():
 @login_required
 def mydocuments():
     documents = Document.query.filter_by(created_by=current_user.id).order_by(Document.created_on.desc()).all()
-    print(len(documents))
+    app.logger.debug("Found {} my documents".format(len(documents)))
 
+    ids = [doc.id for doc in documents]
+    skills_dict = search_index_skills(ids)
+    
     for document in documents:
         document.path = None #hide
+        document.skills = skills_dict.get(document.id)
+        print(document.skills)
 
     return render_template("extractor/mydocuments.html", documents=documents)
 

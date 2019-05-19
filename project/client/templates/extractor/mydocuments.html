@@ -12,8 +12,9 @@
         <thead>
             <tr>
                 <th scope="col">No.</th>
-                <th scope="col">File</th>
-                <th scope="col">Upload on</th>
+                <th scope="col" style="min-width: 250px">File</th>
+                <th scope="col" style="min-width: 200px">Upload on</th>
+                <th scope="col">Skills</th>
             </tr>
         </thead>
         {% for i in range(documents|length)%}
@@ -23,9 +24,12 @@
                     <a href="{{ url_for('extractor.download_my_document', id=documents[i].id)}}">{{documents[i].title}}</a>
                 </td>
                 <td>{{documents[i].created_on}}</td>
+                <td>{{documents[i].skills}}</td>
             </tr>
         {% endfor %}
     </table>
+
+    <p><a href="{{ url_for('extractor.document_upload') }}">Upload file to extract skills</a></p>
 {% endif %}
 
 {% endblock %}

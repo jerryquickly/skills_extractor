@@ -2,8 +2,9 @@
 
 import os
 import json
-import PyPDF2
+from typing import List
 
+import PyPDF2
 from flask import current_app as app
 from elasticsearch import Elasticsearch
 from celery import Task
@@ -11,6 +12,7 @@ from celery import Task
 from project.server import db
 from project.server.models import Document
 from project.server import celery
+from project.server.extractor.indexes import extract_skills_in_document
 
 
 class DocumentService():
@@ -35,11 +37,6 @@ class DocumentService():
     def index_and_extract_skills_async(self, document_id):
         index_and_extract_skills.delay(document_id=document_id)
 
-# @celery.task(name="skills_extractor.sum_ned", bind=True, default_retry_delay=60, max_retries=120, acks_late=True)
-@celery.task()
-def sum_ne(a, b):
-    app.logger.info('Sum {} {}: {}'.format(a, b, a + b))
-    return a + b
 
 # @celery.task(bind=True, default_retry_delay=60, max_retries=120, acks_late=True)
 @celery.task()
@@ -58,23 +55,61 @@ def index_and_extract_skills(document_id):
     app.logger.info(
         'TODO: Extract skill for document {}: {} '.format(document.id, document.title))
 
+    skills = extract_skills_in_document(document_id)
+    if len(skills) > 0:
+        update_index_doc(document_id, {"skills": skills})
+
 
 def index_document(document: Document):
     index = app.config["ELASTICSEARCH_INDEX"]
+
+    document_content = get_document_content(document)
+    n_words = 0 if document_content is None else len(document_content.split())
+
     doc = {
         "id": document.id,
         "title": document.title,
         "content_type": document.content_type,
         "created_on": document.created_on,
-        "created_by": document.created_by
+        "created_by": document.created_by,
+        "content": document_content,
+        "n_words": n_words
     }
-
-    document_content = get_document_content(document)
-    doc['content'] = document_content
 
     es = Elasticsearch()
     res = es.index(index=index, doc_type='document', id=document.id, body=doc)
     es.indices.refresh(index=index)
+
+
+def update_index_doc(id, update_data, doc_type='document'):
+    index = app.config["ELASTICSEARCH_INDEX"]
+
+    body = {"doc": update_data}
+
+    es = Elasticsearch()
+    res = es.update(index=index, doc_type=doc_type, id=id, body=body)
+    es.indices.refresh(index=index)
+
+
+def search_index_skills(ids: List=None) -> dict:
+    index = app.config["ELASTICSEARCH_INDEX"]
+
+    es = Elasticsearch()
+    res = es.search(index=index, body={
+        "_source" : ["skills"],
+        "size" : len(ids),
+        "query": {
+            "terms" : { "id" : ids} 
+        }
+    })
+    
+    result = dict()
+    for doc in res['hits']['hits']:
+        id = int(doc["_id"])
+        skills = doc['_source'].get('skills')
+        result[id] = skills
+        
+    return result
 
 
 def get_document_content(document: Document) -> str:
@@ -104,6 +139,7 @@ def get_document_content(document: Document) -> str:
                 f.close()
 
     return content
+
 
 def get_document_content_by_PyPDF2(document: Document) -> str:
     content = None
