@@ -9,7 +9,8 @@ Extract skills set which document provide:
 Simple web application using the Python 3, [Flask](http://flask.pocoo.org), SQLAlchemy.  
 After register, you can upload document for storage and searching.  
 Document is indexed using [Elasticsearch](https://www.elastic.co).  
-[RDFLib](https://github.com/RDFLib/rdflib) load all defined skills in ontology resource files, and report matching skills on document. 
+[RDFLib](https://github.com/RDFLib/rdflib) load all defined skills in ontology resource files, and report matching skills on document.  
+[Celery](http://www.celeryproject.org) help do index and extract skills asynchronous 
 
 ## Quick Start
 
