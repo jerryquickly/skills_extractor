@@ -19,8 +19,13 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@web-db:5432/users_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@web-db:5432/users_test
       - SECRET_KEY=change_me_in_prod
+      - CELERY_BROKER_URL=amqp://rabbitmq:5672
+      - CELERY_RESULT_BACKEND=amqp://rabbitmq:5672
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
     depends_on:
       - elasticsearch
+      - web-db
+      - rabbitmq
 
   web-db:
     container_name: web-db
@@ -54,4 +59,27 @@ services:
       - 5672:5672
     environment:
       - discovery.type=single-node
+  
+  celery-worker:
+    container_name: celery-worker
+    build:
+      context: ./
+      dockerfile: Dockerfile-celery-worker
+    volumes:
+      - '.:/usr/src/app'
+    environment:
+      - APP_NAME=Skills Extractor
+      - FLASK_DEBUG=1
+      - PYTHONUNBUFFERED=0
+      - APP_SETTINGS=project.server.config.ProductionConfig
+      - DATABASE_URL=postgres://postgres:postgres@web-db:5432/users_dev
+      - DATABASE_TEST_URL=postgres://postgres:postgres@web-db:5432/users_test
+      - SECRET_KEY=change_me_in_prod
+      - CELERY_BROKER_URL=amqp://rabbitmq:5672
+      - CELERY_RESULT_BACKEND=amqp://rabbitmq:5672
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+      - web-db
+      - rabbitmq
       

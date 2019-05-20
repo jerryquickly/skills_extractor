@@ -18,7 +18,7 @@ class BaseConfig(object):
     MAX_CONTENT_LENGTH = os.getenv("MAX_CONTENT_LENGTH", 100 * 1024 * 1024)
     CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "amqp://localhost:5672")
     CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "amqp://localhost:5672")
-
+    ELASTICSEARCH_HOST = os.getenv("ELASTICSEARCH_HOST", "http://localhost:9200")
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""

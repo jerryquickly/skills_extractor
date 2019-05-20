@@ -83,7 +83,8 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
 
 def search_skills(skills: List[str], index="prod-index", doc_type="document", default_field="content",
                   document_ids: List=None):
-    es = Elasticsearch()
+    es_host = app.config["ELASTICSEARCH_HOST"]
+    es = Elasticsearch(es_host)
 
     strs_quoted = []
     # quotes for query exactly word
@@ -113,7 +114,8 @@ def search_skills(skills: List[str], index="prod-index", doc_type="document", de
 
 
 def exists_skill(skill: str, document_id, index="prod-index", doc_type="document", default_field="content") -> bool:
-    es = Elasticsearch()
+    es_host = app.config["ELASTICSEARCH_HOST"]
+    es = Elasticsearch(es_host)
 
     # quotes for query exactly word
     str_quoted = skill.translate(str.maketrans('"', '\"'))

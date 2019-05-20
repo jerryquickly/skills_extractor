@@ -18,7 +18,8 @@ from project.server.extractor.indexes import extract_skills_in_document
 class DocumentService():
 
     def __init__(self):
-        self.index = app.config["ELASTICSEARCH_INDEX"]
+        self.es_host = app.config["ELASTICSEARCH_HOST"]
+        self.es_index = app.config["ELASTICSEARCH_INDEX"]
 
     def create(self, content_type, title, created_by, filename, path) -> Document:
         document = Document(content_type=content_type, title=title,
@@ -29,8 +30,8 @@ class DocumentService():
         return document
 
     def find_indexed(self, id):
-        es = Elasticsearch()
-        res = es.get(index=self.index, doc_type='document', id=id)
+        es = Elasticsearch(self.es_host)
+        res = es.get(index=self.es_index, doc_type='document', id=id)
         app.logger.debug(res['_source'])
         return json.loads(res['_source'])
 
@@ -75,6 +76,7 @@ def index_and_extract_skills(document_id):
 
 
 def index_document(document: Document):
+    es_host = app.config["ELASTICSEARCH_HOST"]
     index = app.config["ELASTICSEARCH_INDEX"]
 
     document_content = get_document_content(document)
@@ -90,17 +92,18 @@ def index_document(document: Document):
         "n_words": n_words
     }
 
-    es = Elasticsearch()
+    es = Elasticsearch(es_host)
     res = es.index(index=index, doc_type='document', id=document.id, body=doc)
     es.indices.refresh(index=index)
 
 
 def update_index_doc(id, update_data, doc_type='document'):
+    es_host = app.config["ELASTICSEARCH_HOST"]
     index = app.config["ELASTICSEARCH_INDEX"]
 
     body = {"doc": update_data}
 
-    es = Elasticsearch()
+    es = Elasticsearch(es_host)
     res = es.update(index=index, doc_type=doc_type, id=id, body=body)
     es.indices.refresh(index=index)
 
@@ -109,9 +112,10 @@ def search_index_skills(ids: List=None) -> dict:
     if len(ids) == 0:
         return dict()
 
+    es_host = app.config["ELASTICSEARCH_HOST"]
     index = app.config["ELASTICSEARCH_INDEX"]
 
-    es = Elasticsearch()
+    es = Elasticsearch(es_host)
     res = es.search(index=index, body={
         "_source" : ["skills", "skill_extracts"],
         "size" : len(ids),

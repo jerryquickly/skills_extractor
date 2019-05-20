@@ -9,12 +9,12 @@ from flask import current_app as app
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import CombinedMultiDict
+from elasticsearch.exceptions import NotFoundError as ElasticsearchNotFoundError
 
 from project.server import bcrypt, db
 from project.server.models import User, Document
 from project.server.extractor.forms import UploadForm
 from project.server.extractor.services import DocumentService, search_index_skills
-
 
 extractor_blueprint = Blueprint("extractor", __name__)
 
@@ -85,7 +85,7 @@ def mydocuments():
                     document.skills = "Not found"
             except KeyError:
                 document.skills = "Document's not indexed yet"
-    except elasticsearch.ElasticsearchException as ex:
+    except ElasticsearchNotFoundError as ex:
         app.logger.info("{}. Elasticsearch is not start or index has not created yet".format(ex))
 
     return render_template("extractor/mydocuments.html", documents=documents)
