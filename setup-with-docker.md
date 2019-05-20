@@ -2,8 +2,6 @@
 
 Use this guide if you want to use Docker in your project.
 
-> Built with Docker v18.03.1-ce.
-
 ## Getting Started
 
 Update the environment variables in *docker-compose.yml*, and then build the images and spin up the containers:
@@ -31,7 +29,7 @@ $ docker-compose run web python manage.py create-data
 
 Access the application at the address [http://localhost:5002/](http://localhost:5002/)
 
-### Testing
+## Testing
 
 Test without coverage:
 
