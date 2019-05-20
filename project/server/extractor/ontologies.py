@@ -13,7 +13,7 @@ from typing import Iterable, Set
 skill_nodes_cache = None
 
 
-class OntNode:
+class OntNode(object):
 
     def __init__(self, namespace_uri, name, type="NamedIndividual", labels: Iterable[str]=None, parents: Iterable[str]=None,
                  difficulty: int = 0, keyword_only: bool = False):
@@ -69,7 +69,7 @@ def load_skill_nodes_from_rdf_resources(skills_resource_dir) -> Set[OntNode]:
 
                 subject = split_triple(s)
                 object = split_triple(o)
-                ontNode = OntNode(subject[0], subject[1], type=object[0])
+                ontNode = OntNode(subject[0], subject[1], type=object[1])
                 skills.add(ontNode)
 
                 # Labels if exists

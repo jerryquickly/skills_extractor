@@ -52,12 +52,25 @@ def index_and_extract_skills(document_id):
 
     index_document(document=document)
 
-    app.logger.info(
-        'TODO: Extract skill for document {}: {} '.format(document.id, document.title))
+    app.logger.debug(
+        'Extract skill for document {}: {} '.format(document.id, document.title))
 
-    skills = extract_skills_in_document(document_id)
-    if len(skills) > 0:
-        update_index_doc(document_id, {"skills": skills})
+    try:
+        skill_extracts = extract_skills_in_document(document_id)
+
+        skills = list(set(skill_extract.name for skill_extract in skill_extracts))
+        skill_extracts_list = [skill_extract.__dict__ for skill_extract in skill_extracts]
+        update_data = {
+            "skills": skills,
+            "skill_extracts": skill_extracts_list
+        }
+
+        app.logger.debug(
+            "Extracted skills for document {}:\n skills: {} \n skill_extracts: {}".format(document.id, skills, skill_extracts_list))
+        update_index_doc(document_id, update_data)
+    except BaseException as ex:
+        update_index_doc(document_id, {"skill_extracts_exception": str(ex)})
+        raise
 
 
 def index_document(document: Document):
@@ -96,7 +109,7 @@ def search_index_skills(ids: List=None) -> dict:
 
     es = Elasticsearch()
     res = es.search(index=index, body={
-        "_source" : ["skills"],
+        "_source" : ["skills", "skill_extracts"],
         "size" : len(ids),
         "query": {
             "terms" : { "id" : ids} 
@@ -106,8 +119,11 @@ def search_index_skills(ids: List=None) -> dict:
     result = dict()
     for doc in res['hits']['hits']:
         id = int(doc["_id"])
-        skills = doc['_source'].get('skills')
-        result[id] = skills
+        try:
+            skills = doc['_source']['skills']
+            result[id] = skills
+        except KeyError:
+            result[id] = "Skills've not extracted yet"
         
     return result
 

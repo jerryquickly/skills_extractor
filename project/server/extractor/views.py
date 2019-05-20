@@ -79,8 +79,10 @@ def mydocuments():
     
     for document in documents:
         document.path = None #hide
-        document.skills = skills_dict.get(document.id)
-        print(document.skills)
+        try:
+            document.skills = skills_dict[document.id]
+        except KeyError:
+            document.skills = "Document's not indexed yet"
 
     return render_template("extractor/mydocuments.html", documents=documents)
 

@@ -16,3 +16,4 @@ elasticsearch>=7.0.0,<8.0.0
 
 celery==4.3
 PyPDF2==1.26.0
+rdflib==4.2.2

@@ -1,15 +1,24 @@
 import os
 import json
+import re
 from typing import List
 
 import PyPDF2
 from elasticsearch import Elasticsearch
 from project.server.extractor.ontologies import load_skill_nodes_from_rdf_resources
 
+class SkillExtract(object):
+    def __init__(self, name, match_str, n_match):
+        self.name = name
+        self.match_str = match_str
+        self.n_match = n_match
 
-def extract_skills_in_document(document_id) -> List[str]:
+
+def extract_skills_in_document(document_id) -> List[SkillExtract]:
     """
-    Extract skill in a document and return founded skills
+    Extract skill in a document and return founded skills.
+    - **return**::
+        :return: List of SkillExtract or empty
     """
 
     skills_resource_dir = "/Users/thanhphan/Documents/Data/research/python/skills_extractor/project/server/resources/ontologies/"
@@ -19,11 +28,17 @@ def extract_skills_in_document(document_id) -> List[str]:
         print("There is no skill to query")
         return []
 
-    result = []
+    result = set()
     es_index = "prod-index"  # app.config["ELASTICSEARCH_INDEX"]
 
     skill_nodes = list(skill_nodes) #set to list
     skill_nodes_len = len(skill_nodes)
+    skill_nodes_dict = dict() #dict by skill name/label to skill_node
+    for skill_node in skill_nodes:
+        skill_nodes_dict[skill_node.name] = skill_node
+        if skill_node.labels is not None:
+            for label in skill_node.labels:
+                skill_nodes_dict[label] = skill_node
 
     page_index = 0
     page_size = 100
@@ -44,12 +59,24 @@ def extract_skills_in_document(document_id) -> List[str]:
                             document_ids=[document_id])
 
         for doc in res['hits']['hits']:
+            content_lower = doc['_source']['content'].lower()
+
             for skill in skills_page:
-                if exists_skill(skill, doc['_id']):
-                    result.append(skill)
+                skill_node = skill_nodes_dict.get(skill)
+                regex = re.compile(r"\b{}\b".format(re.escape(skill.lower())))
+                n_match = len(regex.findall(content_lower))
+                if n_match > 0:
+                    if skill_node is not None and skill_node.type == "NamedIndividual":
+                        skill_extracts = [SkillExtract(
+                            name=parent, match_str=skill, n_match=n_match) for parent in skill_node.parents]
+                        result.update(skill_extracts)
+                    else:
+                        skill_extract = SkillExtract(name=skill, match_str=skill, n_match=n_match)
+                        result.add(skill_extract)
 
     print("Extract {} skills on document id {}. Skills: {}".format(
         len(result), document_id, result))
+
     return result
 
 
