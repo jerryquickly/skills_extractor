@@ -4,6 +4,7 @@ import re
 from typing import List
 
 import PyPDF2
+from flask import current_app as app
 from elasticsearch import Elasticsearch
 from project.server.extractor.ontologies import load_skill_nodes_from_rdf_resources
 
@@ -21,7 +22,7 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
         :return: List of SkillExtract or empty
     """
 
-    skills_resource_dir = "/Users/thanhphan/Documents/Data/research/python/skills_extractor/project/server/resources/ontologies/"
+    skills_resource_dir = os.path.join(app.root_path, "resources/ontologies")
     skill_nodes = load_skill_nodes_from_rdf_resources(skills_resource_dir)
 
     if len(skill_nodes) == 0:
@@ -29,7 +30,7 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
         return []
 
     result = set()
-    es_index = "prod-index"  # app.config["ELASTICSEARCH_INDEX"]
+    es_index = app.config["ELASTICSEARCH_INDEX"]
 
     skill_nodes = list(skill_nodes) #set to list
     skill_nodes_len = len(skill_nodes)

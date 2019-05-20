@@ -35,11 +35,12 @@ class DocumentService():
         return json.loads(res['_source'])
 
     def index_and_extract_skills_async(self, document_id):
-        index_and_extract_skills.delay(document_id=document_id)
+        args =  tuple([document_id])
+        index_and_extract_skills.apply_async(args=(document_id,), )
 
 
-# @celery.task(bind=True, default_retry_delay=60, max_retries=120, acks_late=True)
-@celery.task()
+#@celery.task(bind=True, default_retry_delay=60, max_retries=180, acks_late=True)
+@celery.task(name='tasks.index_and_extract_skills', default_retry_delay=60, max_retries=200, acks_late=True)
 def index_and_extract_skills(document_id):
     if document_id is None:
         app.logger.info('Document id is required')
@@ -105,6 +106,9 @@ def update_index_doc(id, update_data, doc_type='document'):
 
 
 def search_index_skills(ids: List=None) -> dict:
+    if len(ids) == 0:
+        return dict()
+
     index = app.config["ELASTICSEARCH_INDEX"]
 
     es = Elasticsearch()

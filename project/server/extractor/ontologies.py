@@ -42,11 +42,15 @@ def load_skill_nodes_from_rdf_resources(skills_resource_dir) -> Set[OntNode]:
         return skill_nodes_cache
 
     ont_files = []
-    for f in listdir(skills_resource_dir):
-        f_path = join(skills_resource_dir, f)
-        if isfile(f_path) and f_path.endswith(".ttl"):
-            ont_files.append(f_path)
-
+    try:
+        for f in listdir(skills_resource_dir):
+            f_path = join(skills_resource_dir, f)
+            if isfile(f_path) and f_path.endswith(".ttl"):
+                ont_files.append(f_path)
+    except FileNotFoundError:
+        print("Please copy *.ttl file to directory {}".format(skills_resource_dir))
+        raise
+        
     if len(ont_files) == 0:
         print("Ontology (.ttl) files is not found")
         return set()
@@ -152,7 +156,7 @@ def split_triple(triple):
         return [None, None]
 
     triple_str = str(triple)
-    if triple_str.startswith("http://"):
+    if triple_str.startswith("http://") or triple_str.startswith("https://"):
         triple_str = triple_str.split("#")
         if len(triple_str) > 1:
             uri = triple_str[0]

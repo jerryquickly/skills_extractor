@@ -74,15 +74,19 @@ def mydocuments():
     documents = Document.query.filter_by(created_by=current_user.id).order_by(Document.created_on.desc()).all()
     app.logger.debug("Found {} my documents".format(len(documents)))
 
-    ids = [doc.id for doc in documents]
-    skills_dict = search_index_skills(ids)
-    
-    for document in documents:
-        document.path = None #hide
-        try:
-            document.skills = skills_dict[document.id]
-        except KeyError:
-            document.skills = "Document's not indexed yet"
+    try:
+        ids = [doc.id for doc in documents]
+        skills_dict = search_index_skills(ids)
+        for document in documents:
+            document.path = None #hide
+            try:
+                document.skills = skills_dict[document.id]
+                if len(document.skills) == 0:
+                    document.skills = "Not found"
+            except KeyError:
+                document.skills = "Document's not indexed yet"
+    except elasticsearch.ElasticsearchException as ex:
+        app.logger.info("{}. Elasticsearch is not start or index has not created yet".format(ex))
 
     return render_template("extractor/mydocuments.html", documents=documents)
 

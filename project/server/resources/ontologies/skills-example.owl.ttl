@@ -1,0 +1,2972 @@
+@prefix : <https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills> .
+
+<https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#difficulty
+:difficulty rdf:type owl:AnnotationProperty .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#keywordOnly
+:keywordOnly rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#AJAX
+:AJAX rdf:type owl:Class ;
+      rdfs:subClassOf :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ASP
+:ASP rdf:type owl:Class ;
+     rdfs:subClassOf :DotNet ,
+                     :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Actionscript
+:Actionscript rdf:type owl:Class ;
+              rdfs:subClassOf :Flash ,
+                              :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Angular
+:Angular rdf:type owl:Class ;
+         rdfs:subClassOf :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Apache
+:Apache rdf:type owl:Class ;
+        rdfs:subClassOf :Webservers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Apache_Ant
+:Apache_Ant rdf:type owl:Class ;
+            rdfs:subClassOf :Build_Tools ,
+                            :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Application_Servers
+:Application_Servers rdf:type owl:Class ;
+                     rdfs:subClassOf :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Build_Tools
+:Build_Tools rdf:type owl:Class ;
+             rdfs:subClassOf :Development_Environments .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#C
+:C rdf:type owl:Class ;
+   rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CFML
+:CFML rdf:type owl:Class ;
+      rdfs:subClassOf :ColdFusion ,
+                      :Markup_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CPlusPlus
+:CPlusPlus rdf:type owl:Class ;
+           rdfs:subClassOf :Programming_Languages ;
+           rdfs:label "C++"^^xsd:string .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CSharp
+:CSharp rdf:type owl:Class ;
+        rdfs:subClassOf :DotNet ;
+        rdfs:label "C#"^^xsd:string .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ColdFusion
+:ColdFusion rdf:type owl:Class ;
+            rdfs:subClassOf :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Database_Technologies
+:Database_Technologies rdf:type owl:Class ;
+                       :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Development_Environments
+:Development_Environments rdf:type owl:Class ;
+                          :difficulty "2"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Django
+:Django rdf:type owl:Class ;
+        rdfs:subClassOf :Python ,
+                        :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Document_Databases
+:Document_Databases rdf:type owl:Class ;
+                    rdfs:subClassOf :NoSQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Document_Management_Systems
+:Document_Management_Systems rdf:type owl:Class .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DotNet
+:DotNet rdf:type owl:Class ;
+        rdfs:subClassOf :Programming_Languages ;
+        :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Eclipse
+:Eclipse rdf:type owl:Class ;
+         rdfs:subClassOf :Development_Environments ,
+                         :Java_IDE .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Firefox
+:Firefox rdf:type owl:Class ;
+         rdfs:subClassOf :Web_Browsers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Flash
+:Flash rdf:type owl:Class ;
+       rdfs:subClassOf :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Flask
+:Flask rdf:type owl:Class ;
+       rdfs:subClassOf :Python ,
+                       :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Game_Engines
+:Game_Engines rdf:type owl:Class ;
+              rdfs:subClassOf :Development_Environments .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_Apps
+:Google_Apps rdf:type owl:Class ;
+             rdfs:subClassOf :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_Chrome
+:Google_Chrome rdf:type owl:Class ;
+               rdfs:subClassOf :Web_Browsers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Graph_Databases
+:Graph_Databases rdf:type owl:Class ;
+                 rdfs:subClassOf :NoSQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Groovy
+:Groovy rdf:type owl:Class ;
+        rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#IntelliJ_IDEA
+:IntelliJ_IDEA rdf:type owl:Class ;
+               rdfs:subClassOf :Development_Environments ,
+                               :Java_IDE .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Internet_Explorer
+:Internet_Explorer rdf:type owl:Class ;
+                   rdfs:subClassOf :Web_Browsers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JQuery
+:JQuery rdf:type owl:Class ;
+        rdfs:subClassOf :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JQuery_Plugins
+:JQuery_Plugins rdf:type owl:Class ;
+                rdfs:subClassOf :JQuery .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JSON
+:JSON rdf:type owl:Class ;
+      rdfs:subClassOf :Javascript ,
+                      :Markup_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Java
+:Java rdf:type owl:Class ;
+      rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Java_EE
+:Java_EE rdf:type owl:Class ;
+         rdfs:subClassOf :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Java_IDE
+:Java_IDE rdf:type owl:Class ;
+          rdfs:subClassOf :Java ;
+          :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Java_Server_Faces
+:Java_Server_Faces rdf:type owl:Class ;
+                   rdfs:subClassOf :Java_EE ,
+                                   :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Java_Server_Pages
+:Java_Server_Pages rdf:type owl:Class ;
+                   rdfs:subClassOf :Java ,
+                                   :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Javascript
+:Javascript rdf:type owl:Class ;
+            rdfs:subClassOf :Programming_Languages ,
+                            :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Jetty
+:Jetty rdf:type owl:Class ;
+       rdfs:subClassOf :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Key-Value_Stores
+:Key-Value_Stores rdf:type owl:Class ;
+                  rdfs:subClassOf :NoSQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Lua
+:Lua rdf:type owl:Class ;
+     rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Markup_Languages
+:Markup_Languages rdf:type owl:Class ;
+                  :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MongoDB
+:MongoDB rdf:type owl:Class ;
+         rdfs:subClassOf :Document_Databases .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MySQL
+:MySQL rdf:type owl:Class ;
+       rdfs:subClassOf :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Netbeans
+:Netbeans rdf:type owl:Class ;
+          rdfs:subClassOf :Development_Environments ,
+                          :Java_IDE .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Nginx
+:Nginx rdf:type owl:Class ;
+       rdfs:subClassOf :Webservers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NoSQL
+:NoSQL rdf:type owl:Class ;
+       rdfs:subClassOf :Database_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Node.js
+:Node.js rdf:type owl:Class ;
+         rdfs:subClassOf :Javascript ,
+                         :Webservers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Objective_C
+:Objective_C rdf:type owl:Class ;
+             rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#OracleDB
+:OracleDB rdf:type owl:Class ;
+          rdfs:subClassOf :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PHP
+:PHP rdf:type owl:Class ;
+     rdfs:subClassOf :Programming_Languages ,
+                     :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Package_Managers
+:Package_Managers rdf:type owl:Class ;
+                  rdfs:subClassOf :Development_Environments .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Payment_Gateways
+:Payment_Gateways rdf:type owl:Class ;
+                  rdfs:subClassOf :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Performance_Testing
+:Performance_Testing rdf:type owl:Class ;
+                     rdfs:subClassOf :Quality_Assurance .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Perl
+:Perl rdf:type owl:Class ;
+      rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PostgreSQL
+:PostgreSQL rdf:type owl:Class ;
+            rdfs:subClassOf :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Programming_Languages
+:Programming_Languages rdf:type owl:Class ;
+                       :difficulty "2"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Python
+:Python rdf:type owl:Class ;
+        rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Quality_Assurance
+:Quality_Assurance rdf:type owl:Class ;
+                   :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Ruby
+:Ruby rdf:type owl:Class ;
+      rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Ruby_on_Rails
+:Ruby_on_Rails rdf:type owl:Class ;
+               rdfs:subClassOf :Ruby ,
+                               :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SQL
+:SQL rdf:type owl:Class ;
+     rdfs:subClassOf :Database_Technologies ;
+     :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SQLServer
+:SQLServer rdf:type owl:Class ;
+           rdfs:subClassOf :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SQLServer_Reporting_Services
+:SQLServer_Reporting_Services rdf:type owl:Class ;
+                              rdfs:subClassOf :SQLServer .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SQLite
+:SQLite rdf:type owl:Class ;
+        rdfs:subClassOf :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Safari
+:Safari rdf:type owl:Class ;
+        rdfs:subClassOf :Web_Browsers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Scala
+:Scala rdf:type owl:Class ;
+       rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Scripting
+:Scripting rdf:type owl:Class ;
+           rdfs:subClassOf :Programming_Languages ;
+           :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Spring
+:Spring rdf:type owl:Class ;
+        rdfs:subClassOf :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#T-SQL
+:T-SQL rdf:type owl:Class ;
+       rdfs:subClassOf :SQLServer .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Test_Automation
+:Test_Automation rdf:type owl:Class ;
+                 rdfs:subClassOf :Quality_Assurance .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Tomcat
+:Tomcat rdf:type owl:Class ;
+        rdfs:subClassOf :Java ,
+                        :Webservers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#TypeScript
+:TypeScript rdf:type owl:Class ;
+            rdfs:subClassOf :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Unit_Testing
+:Unit_Testing rdf:type owl:Class ;
+              rdfs:subClassOf :Quality_Assurance .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Unity3D
+:Unity3D rdf:type owl:Class ;
+         rdfs:subClassOf :Game_Engines .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Visual_Basic
+:Visual_Basic rdf:type owl:Class ;
+              rdfs:subClassOf :DotNet .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Web_Browsers
+:Web_Browsers rdf:type owl:Class ;
+              rdfs:subClassOf :Web_Technologies ;
+              :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Web_Technologies
+:Web_Technologies rdf:type owl:Class ;
+                  :difficulty "2"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Webservers
+:Webservers rdf:type owl:Class ;
+            rdfs:subClassOf :Web_Technologies ;
+            :difficulty "1"^^xsd:int .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Wide_Column_Stores
+:Wide_Column_Stores rdf:type owl:Class ;
+                    rdfs:subClassOf :NoSQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#XAML
+:XAML rdf:type owl:Class ;
+      rdfs:subClassOf :Markup_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#XML
+:XML rdf:type owl:Class ;
+     rdfs:subClassOf :Markup_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#YAML
+:YAML rdf:type owl:Class ;
+      rdfs:subClassOf :Markup_Languages .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#AES
+:AES rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ANOVA
+:ANOVA rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#API
+:API rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ASP.net
+:ASP.net rdf:type owl:NamedIndividual ,
+                  :ASP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ASP_Classic
+:ASP_Classic rdf:type owl:NamedIndividual ,
+                      :ASP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#AWK
+:AWK rdf:type owl:NamedIndividual ,
+              :Scripting .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Access_DB
+:Access_DB rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Accumulo
+:Accumulo rdf:type owl:NamedIndividual ,
+                   :Wide_Column_Stores .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Agile
+:Agile rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Algorithm
+:Algorithm rdf:type owl:NamedIndividual ;
+           owl:sameAs :Algorithms ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Algorithms
+:Algorithms rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Amazon_EC2
+:Amazon_EC2 rdf:type owl:NamedIndividual ;
+            owl:sameAs :Amazon_Elastic_Compute_Cloud ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Amazon_Elastic_Compute_Cloud
+:Amazon_Elastic_Compute_Cloud rdf:type owl:NamedIndividual ;
+                              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Amazon_S3
+:Amazon_S3 rdf:type owl:NamedIndividual ;
+           owl:sameAs :Amazon_Simple_Storage_Service ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Amazon_Simple_Storage_Service
+:Amazon_Simple_Storage_Service rdf:type owl:NamedIndividual ;
+                               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Android_Activity
+:Android_Activity rdf:type owl:NamedIndividual ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Android_AsyncTask
+:Android_AsyncTask rdf:type owl:NamedIndividual ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Android_Fragments
+:Android_Fragments rdf:type owl:NamedIndividual ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Android_Layout
+:Android_Layout rdf:type owl:NamedIndividual ;
+                :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Android_ListView
+:Android_ListView rdf:type owl:NamedIndividual ;
+                  owl:sameAs :listview ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Android_NDK
+:Android_NDK rdf:type owl:NamedIndividual ,
+                      :C ,
+                      :CPlusPlus ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Android_Studio
+:Android_Studio rdf:type owl:NamedIndividual ,
+                         :Development_Environments .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Angular.js
+:Angular.js rdf:type owl:NamedIndividual ,
+                     :Angular ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#AngularJS_Directive
+:AngularJS_Directive rdf:type owl:NamedIndividual ,
+                              :Angular ;
+                     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Animation
+:Animation rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Ant
+:Ant rdf:type owl:NamedIndividual ,
+              :Apache_Ant ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Architecture
+:Architecture rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ArrayList
+:ArrayList rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Assembly
+:Assembly rdf:type owl:NamedIndividual ,
+                   :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Autocomplete
+:Autocomplete rdf:type owl:NamedIndividual ,
+                       :AJAX ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Backbone.js
+:Backbone.js rdf:type owl:NamedIndividual ,
+                      :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Balsamiq
+:Balsamiq rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Bash
+:Bash rdf:type owl:NamedIndividual ,
+               :Programming_Languages ,
+               :Scripting .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Bison
+:Bison rdf:type owl:NamedIndividual ,
+                :Build_Tools .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Bitbucket
+:Bitbucket rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Bitpay
+:Bitpay rdf:type owl:NamedIndividual ,
+                 :Payment_Gateways .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Bluetooth
+:Bluetooth rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Boost
+:Boost rdf:type owl:NamedIndividual ,
+                :CPlusPlus .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Bootstrap
+:Bootstrap rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Breakpoint_Testing
+:Breakpoint_Testing rdf:type owl:NamedIndividual ,
+                             :Performance_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CSS3
+:CSS3 rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CSV
+:CSV rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CUDA
+:CUDA rdf:type owl:NamedIndividual ,
+               :C ,
+               :CPlusPlus .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Cakephp
+:Cakephp rdf:type owl:NamedIndividual ,
+                  :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Calendar
+:Calendar rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Canvas
+:Canvas rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Cassandra
+:Cassandra rdf:type owl:NamedIndividual ,
+                    :Wide_Column_Stores .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CherryPy
+:CherryPy rdf:type owl:NamedIndividual ,
+                   :Python ,
+                   :Webservers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Chi-Squared
+:Chi-Squared rdf:type owl:NamedIndividual ;
+             owl:sameAs :Chi_Squared ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Chi_Squared
+:Chi_Squared rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Clustering
+:Clustering rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Cocoa
+:Cocoa rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Cocos2d-x
+:Cocos2d-x rdf:type owl:NamedIndividual ,
+                    :Game_Engines ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Codeigniter
+:Codeigniter rdf:type owl:NamedIndividual ,
+                      :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Combo_box
+:Combo_box rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Configuration_Testing
+:Configuration_Testing rdf:type owl:NamedIndividual ,
+                                :Performance_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Cordova
+:Cordova rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Cosmos
+:Cosmos rdf:type owl:NamedIndividual ,
+                 :Key-Value_Stores .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CouchBase
+:CouchBase rdf:type owl:NamedIndividual ,
+                    :Document_Databases .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#CouchDB
+:CouchDB rdf:type owl:NamedIndividual ,
+                  :Document_Databases .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Crystal_Reports
+:Crystal_Reports rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#D3.js
+:D3.js rdf:type owl:NamedIndividual ,
+                :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DES
+:DES rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DI
+:DI rdf:type owl:NamedIndividual ;
+    owl:sameAs :Dependency_Injection ;
+    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DLL
+:DLL rdf:type owl:NamedIndividual ;
+     owl:sameAs :Dynamic-Link_Library ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DNS
+:DNS rdf:type owl:NamedIndividual ,
+              :Web_Technologies ;
+     owl:sameAs :Domain_Name_System ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DOM
+:DOM rdf:type owl:NamedIndividual ,
+              :XML ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DataGrid
+:DataGrid rdf:type owl:NamedIndividual ,
+                   :CSharp ,
+                   :JQuery ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DataGridView
+:DataGridView rdf:type owl:NamedIndividual ,
+                       :CSharp ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DataTable
+:DataTable rdf:type owl:NamedIndividual ,
+                    :Web_Technologies ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Data_Frame
+:Data_Frame rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Database
+:Database rdf:type owl:NamedIndividual ,
+                   :Database_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Database_Design
+:Database_Design rdf:type owl:NamedIndividual ,
+                          :Database_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Date_picker
+:Date_picker rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Delphi
+:Delphi rdf:type owl:NamedIndividual ,
+                 :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Dependency_Injection
+:Dependency_Injection rdf:type owl:NamedIndividual ;
+                      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Devise
+:Devise rdf:type owl:NamedIndividual ,
+                 :Ruby_on_Rails .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Dialog
+:Dialog rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Django_Models
+:Django_Models rdf:type owl:NamedIndividual ,
+                        :Django ;
+               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Docker
+:Docker rdf:type owl:NamedIndividual ,
+                 :Build_Tools .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Doctrine_2
+:Doctrine_2 rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Domain_Name_System
+:Domain_Name_System rdf:type owl:NamedIndividual ,
+                             :Web_Technologies ;
+                    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Drop-Down_Menu
+:Drop-Down_Menu rdf:type owl:NamedIndividual ;
+                :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Drupal
+:Drupal rdf:type owl:NamedIndividual ,
+                 :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Dwolla
+:Dwolla rdf:type owl:NamedIndividual ,
+                 :Payment_Gateways .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Dynamic-Link_Library
+:Dynamic-Link_Library rdf:type owl:NamedIndividual ;
+                      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#DynamoDB
+:DynamoDB rdf:type owl:NamedIndividual ,
+                   :Key-Value_Stores .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Eclipse_Plugin
+:Eclipse_Plugin rdf:type owl:NamedIndividual ,
+                         :Eclipse ;
+                :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Elasticsearch
+:Elasticsearch rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Emacs
+:Emacs rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Ember.js
+:Ember.js rdf:type owl:NamedIndividual ,
+                   :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Entity_Framework
+:Entity_Framework rdf:type owl:NamedIndividual ,
+                           :DotNet ,
+                           :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Ext_JS
+:Ext_JS rdf:type owl:NamedIndividual ,
+                 :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#FB_Messenger
+:FB_Messenger rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#FFmpeg
+:FFmpeg rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#FTP
+:FTP rdf:type owl:NamedIndividual ,
+              :Web_Technologies ;
+     owl:sameAs :File_Transfer_Protocol ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Facebook_Graph_API
+:Facebook_Graph_API rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#File_IO
+:File_IO rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#File_Transfer_Protocol
+:File_Transfer_Protocol rdf:type owl:NamedIndividual ,
+                                 :Web_Technologies ;
+                        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Firebase
+:Firebase rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Flex
+:Flex rdf:type owl:NamedIndividual ,
+               :Build_Tools .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#FreeBSD
+:FreeBSD rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Function
+:Function rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GCC
+:GCC rdf:type owl:NamedIndividual ,
+              :Build_Tools .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GLM
+:GLM rdf:type owl:NamedIndividual ;
+     owl:sameAs :Generalized_Linear_Model ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GPU
+:GPU rdf:type owl:NamedIndividual ;
+     owl:sameAs :Graphics_Processing_Unit ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GPlusPlus
+:GPlusPlus rdf:type owl:NamedIndividual ,
+                    :Build_Tools ;
+           rdfs:label "G++"^^xsd:string .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GTK
+:GTK rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GUI
+:GUI rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GWT
+:GWT rdf:type owl:NamedIndividual ,
+              :Google_Apps ;
+     owl:sameAs :Google_Web_Toolkit ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Generalized_Linear_Model
+:Generalized_Linear_Model rdf:type owl:NamedIndividual ;
+                          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#GitHub
+:GitHub rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_Analytics
+:Google_Analytics rdf:type owl:NamedIndividual ,
+                           :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_App_Engine
+:Google_App_Engine rdf:type owl:NamedIndividual ;
+                   owl:sameAs :app_engine ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_Apps_Script
+:Google_Apps_Script rdf:type owl:NamedIndividual ,
+                             :Google_Apps .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_Chrome_Extension
+:Google_Chrome_Extension rdf:type owl:NamedIndividual ,
+                                  :Google_Chrome ;
+                         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_Maps_API
+:Google_Maps_API rdf:type owl:NamedIndividual ,
+                          :Google_Apps .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Google_Web_Toolkit
+:Google_Web_Toolkit rdf:type owl:NamedIndividual ,
+                             :Google_Apps ;
+                    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Gradle
+:Gradle rdf:type owl:NamedIndividual ,
+                 :Build_Tools ,
+                 :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Grails
+:Grails rdf:type owl:NamedIndividual ,
+                 :Groovy .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Graphics_Processing_Unit
+:Graphics_Processing_Unit rdf:type owl:NamedIndividual ;
+                          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#HBase
+:HBase rdf:type owl:NamedIndividual ,
+                :Wide_Column_Stores .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#HPUX
+:HPUX rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#HTTP
+:HTTP rdf:type owl:NamedIndividual ,
+               :Web_Technologies ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#HTTPS
+:HTTPS rdf:type owl:NamedIndividual ,
+                :Web_Technologies ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Hackage
+:Hackage rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Hibernate
+:Hibernate rdf:type owl:NamedIndividual ,
+                    :Java ,
+                    :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Highcharts
+:Highcharts rdf:type owl:NamedIndividual ,
+                     :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Hypothesis_Testing
+:Hypothesis_Testing rdf:type owl:NamedIndividual ;
+                    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#IDE
+:IDE rdf:type owl:NamedIndividual ,
+              :Development_Environments .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#IO
+:IO rdf:type owl:NamedIndividual ;
+    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#IPC
+:IPC rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Indexing
+:Indexing rdf:type owl:NamedIndividual ,
+                   :Database_Technologies ,
+                   :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Ionic
+:Ionic rdf:type owl:NamedIndividual ,
+                :Angular ;
+       owl:sameAs :Ionic_Framework ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Ionic_Framework
+:Ionic_Framework rdf:type owl:NamedIndividual ,
+                          :Angular ;
+                 :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Isolation_testing
+:Isolation_testing rdf:type owl:NamedIndividual ,
+                            :Performance_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JBoss
+:JBoss rdf:type owl:NamedIndividual ,
+                :Application_Servers ,
+                :Java_EE ;
+       owl:sameAs :WildFly .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JDBC
+:JDBC rdf:type owl:NamedIndividual ,
+               :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JPA
+:JPA rdf:type owl:NamedIndividual ,
+              :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JPEG
+:JPEG rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JQuery_Mobile
+:JQuery_Mobile rdf:type owl:NamedIndividual ,
+                        :JQuery .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JQuery_UI
+:JQuery_UI rdf:type owl:NamedIndividual ,
+                    :JQuery .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JSF_2
+:JSF_2 rdf:type owl:NamedIndividual ,
+                :Java_Server_Faces ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JSP
+:JSP rdf:type owl:NamedIndividual ,
+              :Java_Server_Pages ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JUnit
+:JUnit rdf:type owl:NamedIndividual ,
+                :Java ,
+                :Unit_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#JavaFX
+:JavaFX rdf:type owl:NamedIndividual ,
+                 :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Javascript_events
+:Javascript_events rdf:type owl:NamedIndividual ,
+                            :Web_Technologies ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Jenkins
+:Jenkins rdf:type owl:NamedIndividual ,
+                  :Test_Automation .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Jira
+:Jira rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Joomla
+:Joomla rdf:type owl:NamedIndividual ,
+                 :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Kanban
+:Kanban rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Kendo_UI
+:Kendo_UI rdf:type owl:NamedIndividual ,
+                   :JQuery .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Kmeans
+:Kmeans rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Knockout.js
+:Knockout.js rdf:type owl:NamedIndividual ,
+                      :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#LINQ_to_SQL
+:LINQ_to_SQL rdf:type owl:NamedIndividual ,
+                      :DotNet ,
+                      :SQL ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Lambda
+:Lambda rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Laravel
+:Laravel rdf:type owl:NamedIndividual ,
+                  :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Lighttpd
+:Lighttpd rdf:type owl:NamedIndividual ,
+                   :Webservers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Linear_Regression
+:Linear_Regression rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Linked_list
+:Linked_list rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Linux_kernel
+:Linux_kernel rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#LiteSpeed
+:LiteSpeed rdf:type owl:NamedIndividual ,
+                    :Webservers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Load_Testing
+:Load_Testing rdf:type owl:NamedIndividual ,
+                       :Performance_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Localization
+:Localization rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Locks
+:Locks rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Logistic_Regression
+:Logistic_Regression rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Lucene
+:Lucene rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MD5
+:MD5 rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MFC
+:MFC rdf:type owl:NamedIndividual ,
+              :CPlusPlus ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MS_Access
+:MS_Access rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MVC
+:MVC rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MVVM
+:MVVM rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Magento
+:Magento rdf:type owl:NamedIndividual ,
+                  :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Makefile
+:Makefile rdf:type owl:NamedIndividual ,
+                   :Build_Tools ,
+                   :C ,
+                   :CPlusPlus ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MapReduce
+:MapReduce rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Marshalling
+:Marshalling rdf:type owl:NamedIndividual ;
+             owl:sameAs :Serialization ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Mathematical_Statistics
+:Mathematical_Statistics rdf:type owl:NamedIndividual ;
+                         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Matplotlib
+:Matplotlib rdf:type owl:NamedIndividual ,
+                     :Python .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Matrix
+:Matrix rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Maven
+:Maven rdf:type owl:NamedIndividual ,
+                :Build_Tools ,
+                :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Maximum_Likelihood
+:Maximum_Likelihood rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Memcache
+:Memcache rdf:type owl:NamedIndividual ,
+                   :Key-Value_Stores .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Menu
+:Menu rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Meteor
+:Meteor rdf:type owl:NamedIndividual ,
+                 :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Model
+:Model rdf:type owl:NamedIndividual ,
+                :Database_Technologies ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MongoEngine
+:MongoEngine rdf:type owl:NamedIndividual ,
+                      :MongoDB ,
+                      :Python .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Mongoose
+:Mongoose rdf:type owl:NamedIndividual ,
+                   :MongoDB ,
+                   :Node.js .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MultidimensionalArray
+:MultidimensionalArray rdf:type owl:NamedIndividual ;
+                       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Multiple_Regression
+:Multiple_Regression rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Multiprocessing
+:Multiprocessing rdf:type owl:NamedIndividual ,
+                          :Python ;
+                 :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Multivariate_Analysis
+:Multivariate_Analysis rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#MySQLi
+:MySQLi rdf:type owl:NamedIndividual ,
+                 :MySQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NHibernate
+:NHibernate rdf:type owl:NamedIndividual ,
+                     :DotNet ,
+                     :SQL .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NLG
+:NLG rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NLP
+:NLP rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NLU
+:NLU rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NPM
+:NPM rdf:type owl:NamedIndividual ,
+              :Node.js ,
+              :Package_Managers .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NUnit
+:NUnit rdf:type owl:NamedIndividual ,
+                :DotNet ,
+                :Unit_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Neo4j
+:Neo4j rdf:type owl:NamedIndividual ,
+                :Graph_Databases .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Networking
+:Networking rdf:type owl:NamedIndividual ,
+                     :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Neural_Networks
+:Neural_Networks rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#NullPointerException
+:NullPointerException rdf:type owl:NamedIndividual ;
+                      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Numpy
+:Numpy rdf:type owl:NamedIndividual ,
+                :Python .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#OAuth
+:OAuth rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#OOP
+:OOP rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ORM
+:ORM rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#OpenCV
+:OpenCV rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#OpenGL
+:OpenGL rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#OpenGL_ES
+:OpenGL_ES rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Oracle_11g
+:Oracle_11g rdf:type owl:NamedIndividual ,
+                     :OracleDB ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Oracle_18c
+:Oracle_18c rdf:type owl:NamedIndividual ,
+                     :OracleDB .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Oracle_Database_Cloud
+:Oracle_Database_Cloud rdf:type owl:NamedIndividual ,
+                                :OracleDB .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PCA
+:PCA rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PDF
+:PDF rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PDO
+:PDO rdf:type owl:NamedIndividual ,
+              :PHP ;
+     owl:sameAs :PHP_Data_Objects ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PHP_Data_Objects
+:PHP_Data_Objects rdf:type owl:NamedIndividual ,
+                           :PHP ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PNG
+:PNG rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Pandas
+:Pandas rdf:type owl:NamedIndividual ,
+                 :Python .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Parallel_Processing
+:Parallel_Processing rdf:type owl:NamedIndividual ;
+                     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PayPal
+:PayPal rdf:type owl:NamedIndividual ,
+                 :Payment_Gateways .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Pip
+:Pip rdf:type owl:NamedIndividual ,
+              :Package_Managers ,
+              :Python .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Play_Framework
+:Play_Framework rdf:type owl:NamedIndividual ,
+                         :Scala ,
+                         :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Postgres
+:Postgres rdf:type owl:NamedIndividual ,
+                   :PostgreSQL ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Power_Shell
+:Power_Shell rdf:type owl:NamedIndividual ,
+                      :Programming_Languages .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Predictive_Models
+:Predictive_Models rdf:type owl:NamedIndividual ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PrimeFaces
+:PrimeFaces rdf:type owl:NamedIndividual ,
+                     :Java_Server_Faces ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Prototyping
+:Prototyping rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Proxy
+:Proxy rdf:type owl:NamedIndividual ,
+                :Web_Technologies ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Python2
+:Python2 rdf:type owl:NamedIndividual ,
+                  :Python ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Python3
+:Python3 rdf:type owl:NamedIndividual ,
+                  :Python ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Qt
+:Qt rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#REST
+:REST rdf:type owl:NamedIndividual ,
+               :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#RSpec
+:RSpec rdf:type owl:NamedIndividual ,
+                :Ruby ,
+                :Test_Automation .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#RStudio
+:RStudio rdf:type owl:NamedIndividual ,
+                  :Development_Environments .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Random_Forest
+:Random_Forest rdf:type owl:NamedIndividual ;
+               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Rapid_Miner
+:Rapid_Miner rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Razor
+:Razor rdf:type owl:NamedIndividual ,
+                :ASP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#React.js
+:React.js rdf:type owl:NamedIndividual ,
+                   :Javascript .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Redis
+:Redis rdf:type owl:NamedIndividual ,
+                :Key-Value_Stores .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Reporting_Services
+:Reporting_Services rdf:type owl:NamedIndividual ,
+                             :SQLServer_Reporting_Services ;
+                    owl:sameAs :SSRS ;
+                    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Robo3T
+:Robo3T rdf:type owl:NamedIndividual ,
+                 :MongoDB .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SCRUM
+:SCRUM rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SDK
+:SDK rdf:type owl:NamedIndividual ;
+     owl:sameAs :Software_Development_Kit ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SHA
+:SHA rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SOAP
+:SOAP rdf:type owl:NamedIndividual ,
+               :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SPSS
+:SPSS rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SQL_Server_2008_R2
+:SQL_Server_2008_R2 rdf:type owl:NamedIndividual ,
+                             :SQLServer .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SQL_Server_2012
+:SQL_Server_2012 rdf:type owl:NamedIndividual ,
+                          :SQLServer .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SQLite_3
+:SQLite_3 rdf:type owl:NamedIndividual ,
+                   :SQLite ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SSH
+:SSH rdf:type owl:NamedIndividual ;
+     owl:sameAs :Secure_Shell ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SSIS
+:SSIS rdf:type owl:NamedIndividual ,
+               :SQLServer .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SSL
+:SSL rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SSRS
+:SSRS rdf:type owl:NamedIndividual ,
+               :SQLServer_Reporting_Services ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#STL
+:STL rdf:type owl:NamedIndividual ,
+              :CPlusPlus ;
+     owl:sameAs :Standard_Template_Library ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SVG
+:SVG rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SVM
+:SVM rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SVN
+:SVN rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Secure_Shell
+:Secure_Shell rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Selenium
+:Selenium rdf:type owl:NamedIndividual ,
+                   :Test_Automation .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Semaphores
+:Semaphores rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Serialization
+:Serialization rdf:type owl:NamedIndividual ;
+               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Servlets
+:Servlets rdf:type owl:NamedIndividual ,
+                   :Java ,
+                   :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#SharePoint
+:SharePoint rdf:type owl:NamedIndividual ,
+                     :Document_Management_Systems .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Shared_Library
+:Shared_Library rdf:type owl:NamedIndividual ;
+                :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Shared_Object
+:Shared_Object rdf:type owl:NamedIndividual ;
+               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Shell
+:Shell rdf:type owl:NamedIndividual ,
+                :Programming_Languages ,
+                :Scripting .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Silverlight
+:Silverlight rdf:type owl:NamedIndividual ,
+                      :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Soak_Testing
+:Soak_Testing rdf:type owl:NamedIndividual ,
+                       :Performance_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Socket.IO
+:Socket.IO rdf:type owl:NamedIndividual ,
+                    :Javascript ,
+                    :Node.js ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Software_Development_Kit
+:Software_Development_Kit rdf:type owl:NamedIndividual ;
+                          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Solr
+:Solr rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Sphinx
+:Sphinx rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Spike_Testing
+:Spike_Testing rdf:type owl:NamedIndividual ,
+                        :Performance_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Splunk
+:Splunk rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Spring_Boot
+:Spring_Boot rdf:type owl:NamedIndividual ,
+                      :Spring ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Spring_Security
+:Spring_Security rdf:type owl:NamedIndividual ,
+                          :Spring ;
+                 :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Standard_Template_Library
+:Standard_Template_Library rdf:type owl:NamedIndividual ,
+                                    :CPlusPlus ;
+                           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Stored_Procedures
+:Stored_Procedures rdf:type owl:NamedIndividual ,
+                            :Database_Technologies ;
+                   owl:sameAs :sproc ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Stress_Testing
+:Stress_Testing rdf:type owl:NamedIndividual ,
+                         :Performance_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Struts
+:Struts rdf:type owl:NamedIndividual ,
+                 :Java_EE ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Struts_2
+:Struts_2 rdf:type owl:NamedIndividual ,
+                   :Java_EE ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Sublime_Text
+:Sublime_Text rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Survival_Analysis
+:Survival_Analysis rdf:type owl:NamedIndividual ;
+                   owl:sameAs :survival ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Swing
+:Swing rdf:type owl:NamedIndividual ,
+                :Java .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Symfony
+:Symfony rdf:type owl:NamedIndividual ,
+                  :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#TCP
+:TCP rdf:type owl:NamedIndividual ;
+     owl:sameAs :Transmission_Control_Protocol ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#TDD
+:TDD rdf:type owl:NamedIndividual ,
+              :Unit_Testing .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#TFS
+:TFS rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#TSQL
+:TSQL rdf:type owl:NamedIndividual ,
+               :T-SQL ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#T_Test
+:T_Test rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Tabs
+:Tabs rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#TextBox
+:TextBox rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Threading
+:Threading rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Time_Series
+:Time_Series rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Tkinter
+:Tkinter rdf:type owl:NamedIndividual ,
+                  :Python .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Transmission_Control_Protocol
+:Transmission_Control_Protocol rdf:type owl:NamedIndividual ;
+                               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Tree
+:Tree rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Triggers
+:Triggers rdf:type owl:NamedIndividual ,
+                   :Database_Technologies ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#UI
+:UI rdf:type owl:NamedIndividual ;
+    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#UIImageView
+:UIImageView rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#UIScrollView
+:UIScrollView rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#UITableView
+:UITableView rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#UIView
+:UIView rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#UIViewController
+:UIViewController rdf:type owl:NamedIndividual ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#UIWebView
+:UIWebView rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#URL
+:URL rdf:type owl:NamedIndividual ,
+              :Web_Technologies ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#URL_Rewriting
+:URL_Rewriting rdf:type owl:NamedIndividual ,
+                        :Web_Technologies ;
+               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Unity
+:Unity rdf:type owl:NamedIndividual ,
+                :Unity3D ;
+       owl:sameAs :Unity_3D ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Unity_3D
+:Unity_3D rdf:type owl:NamedIndividual ,
+                   :Unity3D ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#User_Interface
+:User_Interface rdf:type owl:NamedIndividual ;
+                :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#VB
+:VB rdf:type owl:NamedIndividual ,
+             :Visual_Basic ;
+    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#VB.net
+:VB.net rdf:type owl:NamedIndividual ,
+                 :Visual_Basic ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#VBA
+:VBA rdf:type owl:NamedIndividual ,
+              :Visual_Basic ;
+     owl:sameAs :Visual_Basic_for_Applications ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#VBScript
+:VBScript rdf:type owl:NamedIndividual ,
+                   :Visual_Basic .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#VCS
+:VCS rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Vector
+:Vector rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Vim
+:Vim rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Visual_Basic_for_Applications
+:Visual_Basic_for_Applications rdf:type owl:NamedIndividual ,
+                                        :Visual_Basic ;
+                               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#WCF
+:WCF rdf:type owl:NamedIndividual ,
+              :DotNet .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#WPF
+:WPF rdf:type owl:NamedIndividual ,
+              :DotNet ,
+              :XAML .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Waterfall
+:Waterfall rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#WebSocket
+:WebSocket rdf:type owl:NamedIndividual ,
+                    :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#WebView
+:WebView rdf:type owl:NamedIndividual ,
+                  :Web_Technologies ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Web_Forms
+:Web_Forms rdf:type owl:NamedIndividual ,
+                    :ASP ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#WildFly
+:WildFly rdf:type owl:NamedIndividual ,
+                  :Application_Servers ,
+                  :Java_EE .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#WinAPI
+:WinAPI rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#WinForms
+:WinForms rdf:type owl:NamedIndividual ,
+                   :DotNet .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Windows_10
+:Windows_10 rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Windows_7
+:Windows_7 rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Windows_8
+:Windows_8 rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Windows_XP
+:Windows_XP rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#XML_parsing
+:XML_parsing rdf:type owl:NamedIndividual ,
+                      :XML ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#XSD
+:XSD rdf:type owl:NamedIndividual ,
+              :XML .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#XSLT
+:XSLT rdf:type owl:NamedIndividual ,
+               :XML .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Xamarin
+:Xamarin rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Xpath
+:Xpath rdf:type owl:NamedIndividual ,
+                :XML .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#YACC
+:YACC rdf:type owl:NamedIndividual ,
+               :Build_Tools .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Yii
+:Yii rdf:type owl:NamedIndividual ,
+              :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#YouTube_API
+:YouTube_API rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Zend_Framework
+:Zend_Framework rdf:type owl:NamedIndividual ,
+                         :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#activerecord
+:activerecord rdf:type owl:NamedIndividual ,
+                       :Ruby ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#app_engine
+:app_engine rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#apt-cache
+:apt-cache rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#apt-get
+:apt-get rdf:type owl:NamedIndividual ,
+                  :Package_Managers ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#asynchronous
+:asynchronous rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#automation
+:automation rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#batch_file
+:batch_file rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#bayesian
+:bayesian rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#binary
+:binary rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#binding
+:binding rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#binomial
+:binomial rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#bitmap
+:bitmap rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#build
+:build rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#cURL
+:cURL rdf:type owl:NamedIndividual ,
+               :Web_Technologies .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#caching
+:caching rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#callback
+:callback rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#camera
+:camera rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#casting
+:casting rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#categorical_data
+:categorical_data rdf:type owl:NamedIndividual ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#character_encoding
+:character_encoding rdf:type owl:NamedIndividual ,
+                             :Web_Technologies ;
+                    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#chart
+:chart rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#cmd
+:cmd rdf:type owl:NamedIndividual ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#command_line
+:command_line rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#compilation
+:compilation rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#compiler_construction
+:compiler_construction rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#compiler_errors
+:compiler_errors rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#confidence_interval
+:confidence_interval rdf:type owl:NamedIndividual ;
+                     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#configuration
+:configuration rdf:type owl:NamedIndividual ;
+               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#constructor
+:constructor rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#controller
+:controller rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#cookies
+:cookies rdf:type owl:NamedIndividual ,
+                  :Web_Technologies ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#core_data
+:core_data rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#correlation
+:correlation rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#count
+:count rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#cross-validation
+:cross-validation rdf:type owl:NamedIndividual ;
+                  owl:sameAs :cross_validation ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#cross_validation
+:cross_validation rdf:type owl:NamedIndividual ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#data_binding
+:data_binding rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#data_transformation
+:data_transformation rdf:type owl:NamedIndividual ;
+                     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#datetime
+:datetime rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#debugging
+:debugging rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#dictionary
+:dictionary rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#download
+:download rdf:type owl:NamedIndividual ,
+                   :Web_Technologies ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#drag_and_drop
+:drag_and_drop rdf:type owl:NamedIndividual ;
+               :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#encoding
+:encoding rdf:type owl:NamedIndividual ,
+                   :Web_Technologies ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#enums
+:enums rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#error_handling
+:error_handling rdf:type owl:NamedIndividual ;
+                :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#exception_handling
+:exception_handling rdf:type owl:NamedIndividual ;
+                    :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#feature_selection
+:feature_selection rdf:type owl:NamedIndividual ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#file_upload
+:file_upload rdf:type owl:NamedIndividual ,
+                      :Web_Technologies ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#filter
+:filter rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#fonts
+:fonts rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#for_loop
+:for_loop rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#foreach
+:foreach rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#forecasting
+:forecasting rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#generics
+:generics rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#ggplot2
+:ggplot2 rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#graph
+:graph rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#graphics
+:graphics rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#group_by
+:group_by rdf:type owl:NamedIndividual ,
+                   :Database_Technologies ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#hash
+:hash rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#htaccess
+:htaccess rdf:type owl:NamedIndividual ,
+                   :Apache ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#hyperlink
+:hyperlink rdf:type owl:NamedIndividual ,
+                    :Web_Technologies ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#iPad
+:iPad rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#iPhone
+:iPhone rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#if_statement
+:if_statement rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#iframe
+:iframe rdf:type owl:NamedIndividual ,
+                 :Web_Technologies ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#import
+:import rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#insert
+:insert rdf:type owl:NamedIndividual ,
+                 :Database_Technologies ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#installation
+:installation rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#interaction
+:interaction rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#interface
+:interface rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#jar
+:jar rdf:type owl:NamedIndividual ,
+              :Java ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#jqGrid
+:jqGrid rdf:type owl:NamedIndividual ,
+                 :JQuery_Plugins ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#linear_model
+:linear_model rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#linker
+:linker rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#listview
+:listview rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#logging
+:logging rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#macros
+:macros rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#memory_leak
+:memory_leak rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#memory_management
+:memory_management rdf:type owl:NamedIndividual ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#merge
+:merge rdf:type owl:NamedIndividual ,
+                :Database_Technologies ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#mixed_model
+:mixed_model rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#mod_rewrite
+:mod_rewrite rdf:type owl:NamedIndividual ,
+                      :Apache ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#modeling
+:modeling rdf:type owl:NamedIndividual ,
+                   :Database_Technologies ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#module
+:module rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#normal_distribution
+:normal_distribution rdf:type owl:NamedIndividual ;
+                     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#notification
+:notification rdf:type owl:NamedIndividual ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#p-value
+:p-value rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#pagination
+:pagination rdf:type owl:NamedIndividual ,
+                     :Web_Technologies ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#panel_data
+:panel_data rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#parameters
+:parameters rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#permissions
+:permissions rdf:type owl:NamedIndividual ;
+             :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#phpMyAdmin
+:phpMyAdmin rdf:type owl:NamedIndividual ,
+                     :MySQL ,
+                     :PHP .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#plot
+:plot rdf:type owl:NamedIndividual ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#plugins
+:plugins rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#pointer
+:pointer rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#process
+:process rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#properties
+:properties rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#push_notification
+:push_notification rdf:type owl:NamedIndividual ,
+                            :Web_Technologies ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#pypi
+:pypi rdf:type owl:NamedIndividual ,
+               :Package_Managers ,
+               :Python .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#recursion
+:recursion rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#redirect
+:redirect rdf:type owl:NamedIndividual ,
+                   :Web_Technologies ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#reference
+:reference rdf:type owl:NamedIndividual ;
+           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#references
+:references rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#reflection
+:reflection rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#repeated_measures
+:repeated_measures rdf:type owl:NamedIndividual ;
+                   :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#replace
+:replace rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#routing
+:routing rdf:type owl:NamedIndividual ,
+                  :Web_Technologies ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#sampling
+:sampling rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#sass
+:sass rdf:type owl:NamedIndividual ,
+               :Scripting ;
+      :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#scope
+:scope rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#sed
+:sed rdf:type owl:NamedIndividual ,
+              :Scripting ;
+     :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#server
+:server rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#sockets
+:sockets rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#split
+:split rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#sproc
+:sproc rdf:type owl:NamedIndividual ,
+                :Database_Technologies ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#static
+:static rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#statistical_significance
+:statistical_significance rdf:type owl:NamedIndividual ;
+                          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#stream
+:stream rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#struct
+:struct rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#survival
+:survival rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#syntax
+:syntax rdf:type owl:NamedIndividual ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#template
+:template rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#terminal
+:terminal rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#three.js
+:three.js rdf:type owl:NamedIndividual ,
+                   :Javascript ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#timer
+:timer rdf:type owl:NamedIndividual ;
+       :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#transactions
+:transactions rdf:type owl:NamedIndividual ,
+                       :Database_Technologies ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#unicode
+:unicode rdf:type owl:NamedIndividual ;
+         :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#upload
+:upload rdf:type owl:NamedIndividual ,
+                 :Web_Technologies ;
+        :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#variable
+:variable rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#variance
+:variance rdf:type owl:NamedIndividual ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#version_control
+:version_control rdf:type owl:NamedIndividual ;
+                 :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#web_applications
+:web_applications rdf:type owl:NamedIndividual ,
+                           :Web_Technologies ;
+                  :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#web_scraping
+:web_scraping rdf:type owl:NamedIndividual ,
+                       :Web_Technologies ;
+              :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#webforms
+:webforms rdf:type owl:NamedIndividual ,
+                   :Web_Technologies ;
+          :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#while_loop
+:while_loop rdf:type owl:NamedIndividual ;
+            :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#3D
+<https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#3D> rdf:type owl:NamedIndividual ;
+                                                                           :keywordOnly "true"^^xsd:boolean .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Notepad++
+<https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Notepad++> rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PL/SQL
+<https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#PL/SQL> rdf:type owl:NamedIndividual ,
+                                                                                        :OracleDB .
+
+
+###  https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Visual_C++
+<https://github.com/jerryquickly/skills_extractor/ontologies/rd/skills#Visual_C++> rdf:type owl:NamedIndividual ,
+                                                                                            :Programming_Languages .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
