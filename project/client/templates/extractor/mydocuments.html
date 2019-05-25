@@ -2,12 +2,13 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
 
+<h1>Your documents</h1>
+
 {% if documents|length == 0 %}
   <div>You haven't uploaded/created document yet. <a href="{{ url_for('extractor.document_upload') }}">Upload your</a></div>
 {% endif %}
 
 {% if documents|length > 0 %}
-    <h1>Your documents</h1>
     <table class="table">
         <thead>
             <tr>
