@@ -20,6 +20,20 @@ class BaseTestCase(TestCase):
         db.session.add(user)
         db.session.commit()
 
+        user = User(email="test@min.com", password="test_user")
+        db.session.add(user)
+        db.session.commit()
+
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+
+    def login(self, username, password):
+        return self.client.post(
+            "/login",
+            data=dict(email=username, password=password),
+            follow_redirects=True,
+        )
+
+    def logout(self):
+        return self.client.get('/logout', follow_redirects=True)

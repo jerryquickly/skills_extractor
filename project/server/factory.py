@@ -1,5 +1,5 @@
-#factory.py
-from celery import Celery
+# factory.py
+
 
 def init_celery(app, celery):
     celery.conf.update(app.config)

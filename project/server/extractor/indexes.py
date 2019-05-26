@@ -1,12 +1,11 @@
 import os
-import json
 import re
 from typing import List
 
-import PyPDF2
 from flask import current_app as app
 from elasticsearch import Elasticsearch
 from project.server.extractor.ontologies import load_skill_nodes_from_rdf_resources
+
 
 class SkillExtract(object):
     def __init__(self, name, match_str, n_match):
@@ -32,9 +31,9 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
     result = set()
     es_index = app.config["ELASTICSEARCH_INDEX"]
 
-    skill_nodes = list(skill_nodes) #set to list
+    skill_nodes = list(skill_nodes)  # set to list
     skill_nodes_len = len(skill_nodes)
-    skill_nodes_dict = dict() #dict by skill name/label to skill_node
+    skill_nodes_dict = dict()  # dict by skill name/label to skill_node
     for skill_node in skill_nodes:
         skill_nodes_dict[skill_node.name] = skill_node
         if skill_node.labels is not None:
@@ -68,8 +67,8 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
                 n_match = len(regex.findall(content_lower))
                 if n_match > 0:
                     if skill_node is not None and skill_node.type == "NamedIndividual":
-                        skill_extracts = [SkillExtract(
-                            name=parent, match_str=skill, n_match=n_match) for parent in skill_node.parents]
+                        skill_extracts = [SkillExtract(name=parent, match_str=skill,
+                                          n_match=n_match) for parent in skill_node.parents]
                         result.update(skill_extracts)
                     else:
                         skill_extract = SkillExtract(name=skill, match_str=skill, n_match=n_match)
@@ -81,8 +80,8 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
     return result
 
 
-def search_skills(skills: List[str], index="prod-index", doc_type="document", default_field="content",
-                  document_ids: List=None):
+def search_skills(skills: List[str], index="prod-index", doc_type="document",
+                  default_field="content", document_ids: List = None):
     es_host = app.config["ELASTICSEARCH_HOST"]
     es = Elasticsearch(es_host)
 
@@ -113,7 +112,8 @@ def search_skills(skills: List[str], index="prod-index", doc_type="document", de
     return res
 
 
-def exists_skill(skill: str, document_id, index="prod-index", doc_type="document", default_field="content") -> bool:
+def exists_skill(skill: str, document_id, index="prod-index", doc_type="document",
+                 default_field="content") -> bool:
     es_host = app.config["ELASTICSEARCH_HOST"]
     es = Elasticsearch(es_host)
 
@@ -139,6 +139,6 @@ def exists_skill(skill: str, document_id, index="prod-index", doc_type="document
 
     return int(res["count"]) > 0
 
-    
+
 if __name__ == "__main__":
     extract_skills_in_document(65)

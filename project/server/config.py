@@ -20,6 +20,7 @@ class BaseConfig(object):
     CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "amqp://localhost:5672")
     ELASTICSEARCH_HOST = os.getenv("ELASTICSEARCH_HOST", "http://localhost:9200")
 
+
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""
 
@@ -28,8 +29,8 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL", "sqlite:///{0}".format(os.path.join(basedir, "dev.db"))
     )
-    ELASTICSEARCH_INDEX="dev-index"
-    
+    ELASTICSEARCH_INDE = "dev-index"
+
 
 class TestingConfig(BaseConfig):
     """Testing configuration."""
@@ -38,7 +39,8 @@ class TestingConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "sqlite:///"
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_TEST_URL", "sqlite:///")
     TESTING = True
-    ELASTICSEARCH_INDEX="test-index"
+    ELASTICSEARCH_INDEX = "test-index"
+
 
 class ProductionConfig(BaseConfig):
     """Production configuration."""
@@ -49,4 +51,4 @@ class ProductionConfig(BaseConfig):
         "sqlite:///{0}".format(os.path.join(basedir, "prod.db")),
     )
     WTF_CSRF_ENABLED = True
-    ELASTICSEARCH_INDEX="prod-index"
+    ELASTICSEARCH_INDEX = "prod-index"

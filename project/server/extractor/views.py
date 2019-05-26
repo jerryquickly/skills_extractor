@@ -4,15 +4,14 @@
 import os
 import datetime
 
-from flask import render_template, Blueprint, url_for, redirect, flash, request, send_file
+from flask import render_template, Blueprint, flash, request, send_file
 from flask import current_app as app
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import CombinedMultiDict
 from elasticsearch.exceptions import NotFoundError as ElasticsearchNotFoundError
 
-from project.server import bcrypt, db
-from project.server.models import User, Document
+from project.server.models import Document
 from project.server.extractor.forms import UploadForm
 from project.server.extractor.services import DocumentService, search_index_skills
 
@@ -20,10 +19,11 @@ extractor_blueprint = Blueprint("extractor", __name__)
 
 ALLOWED_UPLOAD_EXTENSIONS = set(['txt', 'pdf', 'md'])
 
-#Upload document
+
 @extractor_blueprint.route("/upload", methods=["GET", "POST"])
 @login_required
 def document_upload():
+    """Upload document"""
     form = UploadForm(CombinedMultiDict((request.files, request.form)))
 
     if request.method == 'POST':
@@ -37,12 +37,11 @@ def document_upload():
             if file.filename == '':
                 flash('No selected file or filename is empty', "danger")
                 return render_template("extractor/upload.html", form=form)
-            if allowed_file(file.filename) != True:
+            if allowed_file(file.filename) is not True:
                 flash('Please upload file extensions {}'.format(ALLOWED_UPLOAD_EXTENSIONS),
-                    "danger")
+                      "danger")
                 return render_template("extractor/upload.html", form=form)
 
-            
             filename = secure_filename(file.filename)
 
             save_to_dir = os.path.join(app.config['UPLOAD_FOLDER'], str(current_user.id))
@@ -53,32 +52,36 @@ def document_upload():
 
             current_milli_time = datetime.datetime.now().microsecond
             save_to = os.path.join(save_to_dir, "{}-{}".format(str(current_milli_time), filename))
-            file.save(save_to)  
-            
+            file.save(save_to)
+
             app.logger.info('{} uploaded file to {}'.format(current_user.email, save_to))
 
             documentService = DocumentService()
-            document = documentService.create(content_type=file.content_type, title=filename, 
-                created_by=current_user.id, filename=filename, path=save_to)
+            document = documentService.create(content_type=file.content_type, title=filename,
+                                              created_by=current_user.id, filename=filename,
+                                              path=save_to)
             app.logger.info("Call index_and_extract_skills asynch")
             documentService.index_and_extract_skills_async(document.id)
 
             return render_template("extractor/upload.html", filename=filename, form=form)
-     
+
     return render_template("extractor/upload.html", form=form)
 
-#List my documents uploaded
+
 @extractor_blueprint.route("/mydocuments", methods=["GET"])
 @login_required
 def mydocuments():
-    documents = Document.query.filter_by(created_by=current_user.id).order_by(Document.created_on.desc()).all()
+    """List my documents uploaded"""
+
+    documents = Document.query.filter_by(
+        created_by=current_user.id).order_by(Document.created_on.desc()).all()
     app.logger.debug("Found {} my documents".format(len(documents)))
 
     try:
         ids = [doc.id for doc in documents]
         skills_dict = search_index_skills(ids)
         for document in documents:
-            document.path = None #hide
+            document.path = None  # hide
             try:
                 document.skills = skills_dict[document.id]
                 if len(document.skills) == 0:
@@ -90,12 +93,14 @@ def mydocuments():
 
     return render_template("extractor/mydocuments.html", documents=documents)
 
-#Document download
+
 @extractor_blueprint.route("/mydocuments/<id>", methods=["GET"])
 @login_required
 def download_my_document(id):
+    """Document download"""
+
     document = Document.query.filter_by(id=id).first()
-    if document != None and document.created_by == current_user.id:
+    if document is not None and document.created_by == current_user.id:
         path = document.path
         if not os.path.isabs(path):
             path = os.path.join(app.instance_path, path)

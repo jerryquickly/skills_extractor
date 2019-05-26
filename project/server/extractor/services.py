@@ -7,7 +7,6 @@ from typing import List
 import PyPDF2
 from flask import current_app as app
 from elasticsearch import Elasticsearch
-from celery import Task
 
 from project.server import db
 from project.server.models import Document
@@ -36,12 +35,13 @@ class DocumentService():
         return json.loads(res['_source'])
 
     def index_and_extract_skills_async(self, document_id):
-        args =  tuple([document_id])
+        tuple([document_id])
         index_and_extract_skills.apply_async(args=(document_id,), )
 
 
-#@celery.task(bind=True, default_retry_delay=60, max_retries=180, acks_late=True)
-@celery.task(name='tasks.index_and_extract_skills', default_retry_delay=60, max_retries=200, acks_late=True)
+# @celery.task(bind=True, default_retry_delay=60, max_retries=180, acks_late=True)
+@celery.task(name='tasks.index_and_extract_skills', default_retry_delay=60, max_retries=200,
+             acks_late=True)
 def index_and_extract_skills(document_id):
     if document_id is None:
         app.logger.info('Document id is required')
@@ -68,7 +68,8 @@ def index_and_extract_skills(document_id):
         }
 
         app.logger.debug(
-            "Extracted skills for document {}:\n skills: {} \n skill_extracts: {}".format(document.id, skills, skill_extracts_list))
+            "Extracted skills for document {}:\n skills: {} \n skill_extracts: {}"
+            .format(document.id, skills, skill_extracts_list))
         update_index_doc(document_id, update_data)
     except BaseException as ex:
         update_index_doc(document_id, {"skill_extracts_exception": str(ex)})
@@ -93,7 +94,7 @@ def index_document(document: Document):
     }
 
     es = Elasticsearch(es_host)
-    res = es.index(index=index, doc_type='document', id=document.id, body=doc)
+    es.index(index=index, doc_type='document', id=document.id, body=doc)
     es.indices.refresh(index=index)
 
 
@@ -104,11 +105,11 @@ def update_index_doc(id, update_data, doc_type='document'):
     body = {"doc": update_data}
 
     es = Elasticsearch(es_host)
-    res = es.update(index=index, doc_type=doc_type, id=id, body=body)
+    es.update(index=index, doc_type=doc_type, id=id, body=body)
     es.indices.refresh(index=index)
 
 
-def search_index_skills(ids: List=None) -> dict:
+def search_index_skills(ids: List = None) -> dict:
     if len(ids) == 0:
         return dict()
 
@@ -117,13 +118,13 @@ def search_index_skills(ids: List=None) -> dict:
 
     es = Elasticsearch(es_host)
     res = es.search(index=index, body={
-        "_source" : ["skills", "skill_extracts"],
-        "size" : len(ids),
+        "_source": ["skills", "skill_extracts"],
+        "size": len(ids),
         "query": {
-            "terms" : { "id" : ids} 
+            "terms": {"id": ids}
         }
     })
-    
+
     result = dict()
     for doc in res['hits']['hits']:
         id = int(doc["_id"])
@@ -132,7 +133,7 @@ def search_index_skills(ids: List=None) -> dict:
             result[id] = skills
         except KeyError:
             result[id] = "Skills've not extracted yet"
-        
+
     return result
 
 
@@ -159,7 +160,7 @@ def get_document_content(document: Document) -> str:
             app.logger.warning("Error {}: Failed read file {}".format(
                 e.__class__.__name__, document.filename))
         finally:
-            if f != None:
+            if f is not None:
                 f.close()
 
     return content

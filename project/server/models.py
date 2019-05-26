@@ -41,8 +41,11 @@ class User(db.Model):
     def __repr__(self):
         return "<User {0}>".format(self.email)
 
-# Document upload by user to extract skill
+
 class Document(db.Model):
+    """
+    Document upload by user to extract skill
+    """
 
     __tablename__ = "documents"
 
@@ -50,7 +53,7 @@ class Document(db.Model):
     content_type = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(1000), nullable=False)
     created_on = db.Column(db.DateTime, nullable=False)
-    created_by = db.Column(db.Integer, nullable=True) #User.id
+    created_by = db.Column(db.Integer, nullable=True)  # User.id
     filename = db.Column(db.String(1000), nullable=True)
     path = db.Column(db.String(1255), nullable=True)
 
@@ -67,7 +70,7 @@ class Document(db.Model):
 
     def __repr__(self):
         return "<Document {0}>".format(self.title)
-    
+
     def set_content(self, content):
         self.content = content
 

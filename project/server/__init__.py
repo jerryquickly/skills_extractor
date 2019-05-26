@@ -44,7 +44,7 @@ def create_app(script_info=None):
 
     init_celery(app=app, celery=celery)
 
-    #logging
+    # logging
     handler = RotatingFileHandler('app.log', maxBytes=100000, backupCount=1)
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)

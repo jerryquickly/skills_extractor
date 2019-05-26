@@ -1,6 +1,5 @@
 # project/server/extractor/ontologies.py
 
-import os
 from os import listdir
 from os.path import isfile, join
 
@@ -15,8 +14,8 @@ skill_nodes_cache = None
 
 class OntNode(object):
 
-    def __init__(self, namespace_uri, name, type="NamedIndividual", labels: Iterable[str]=None, parents: Iterable[str]=None,
-                 difficulty: int = 0, keyword_only: bool = False):
+    def __init__(self, namespace_uri, name, type="NamedIndividual", labels: Iterable[str] = None,
+                 parents: Iterable[str] = None, difficulty: int = 0, keyword_only: bool = False):
         self.namespace_uri = namespace_uri
         self.name = name
         self.labels = labels
@@ -50,7 +49,7 @@ def load_skill_nodes_from_rdf_resources(skills_resource_dir) -> Set[OntNode]:
     except FileNotFoundError:
         print("Please copy *.ttl file to directory {}".format(skills_resource_dir))
         raise
-        
+
     if len(ont_files) == 0:
         print("Ontology (.ttl) files is not found")
         return set()
@@ -122,17 +121,6 @@ def load_skill_nodes_from_rdf_resources(skills_resource_dir) -> Set[OntNode]:
             print("Parse file {} exception".format(ont_file))
             raise
 
-    # #print skills
-    # skills_str = []
-    # for ontNode in skills:
-    #     skill = "{} (labels: {}, parents: {}".format(ontNode.name, ontNode.labels, ontNode.parents)
-    #     if ontNode.keyword_only is True:
-    #         skill += ", keywordOnly: " + str(ontNode.keyword_only)
-    #     if ontNode.difficulty:
-    #         skill += ", difficulty: " + str(ontNode.difficulty)
-    #     skills_str.append(skill)
-    # print("Skills: {}".format("\n   ".join(skills_str)))
-
     skill_nodes_cache = skills
     return skills
 
@@ -171,5 +159,5 @@ def split_triple(triple):
 
 
 if __name__ == "__main__":
-    skills_resource_dir = "/Users/thanhphan/Documents/Data/research/python/skills_extractor/project/server/resources/ontologies/"
+    skills_resource_dir = "../resources/ontologies/"
     load_skill_nodes_from_rdf_resources(skills_resource_dir)
