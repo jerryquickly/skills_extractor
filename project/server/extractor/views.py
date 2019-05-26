@@ -12,8 +12,9 @@ from werkzeug.datastructures import CombinedMultiDict
 from elasticsearch.exceptions import NotFoundError as ElasticsearchNotFoundError
 
 from project.server.models import Document
-from project.server.extractor.forms import UploadForm
+from project.server.extractor.forms import UploadForm, SearchForm
 from project.server.extractor.services import DocumentService, search_index_skills
+from project.server.extractor.indexes import search_index_content
 
 extractor_blueprint = Blueprint("extractor", __name__)
 
@@ -73,8 +74,28 @@ def document_upload():
 def mydocuments():
     """List my documents uploaded"""
 
-    documents = Document.query.filter_by(
-        created_by=current_user.id).order_by(Document.created_on.desc()).all()
+    form = SearchForm(request.form)
+
+    q = request.args.get("q")
+    documents = None
+    total_documents = 0
+
+    if q is not None and len(q.strip()) > 0:
+        form.q.data = q
+        ids = search_index_content(q)
+        ids = list(map(int, ids))
+
+        app.logger.debug("q: {}. ids: {}".format(q, ids))
+
+        documents = Document.query.filter(
+            Document.id.in_(ids)).order_by(Document.created_on.desc()).all()
+        total_documents = Document.query.filter_by(
+            created_by=current_user.id).count()
+    else:
+        documents = Document.query.filter_by(
+            created_by=current_user.id).order_by(Document.created_on.desc()).all()
+        total_documents = len(documents)
+
     app.logger.debug("Found {} my documents".format(len(documents)))
 
     try:
@@ -91,7 +112,8 @@ def mydocuments():
     except ElasticsearchNotFoundError as ex:
         app.logger.info("{}. Elasticsearch is not start or index has not created yet".format(ex))
 
-    return render_template("extractor/mydocuments.html", documents=documents)
+    return render_template("extractor/mydocuments.html", documents=documents,
+                           form=form, total_documents=total_documents)
 
 
 @extractor_blueprint.route("/mydocuments/<id>", methods=["GET"])

@@ -4,11 +4,17 @@
 
 <h1>Your documents</h1>
 
-{% if documents|length == 0 %}
+{% if total_documents == 0 %}
   <div>You haven't uploaded/created document yet. <a href="{{ url_for('extractor.document_upload') }}">Upload your</a></div>
 {% endif %}
 
-{% if documents|length > 0 %}
+{% if total_documents > 0 %}
+    <div>
+        <form action="{{ url_for('extractor.mydocuments', q=q) }}" method="GET" role="form">
+            {{ wtf.form_field(form.q, placeholder='Search content') }}
+        </form>
+    </div>
+
     <table class="table">
         <thead>
             <tr>

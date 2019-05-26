@@ -67,8 +67,9 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
                 n_match = len(regex.findall(content_lower))
                 if n_match > 0:
                     if skill_node is not None and skill_node.type == "NamedIndividual":
-                        skill_extracts = [SkillExtract(name=parent, match_str=skill,
-                                          n_match=n_match) for parent in skill_node.parents]
+                        skill_extracts = [SkillExtract(
+                            name=parent, match_str=skill, n_match=n_match)
+                            for parent in skill_node.parents]
                         result.update(skill_extracts)
                     else:
                         skill_extract = SkillExtract(name=skill, match_str=skill, n_match=n_match)
@@ -138,6 +139,45 @@ def exists_skill(skill: str, document_id, index="prod-index", doc_type="document
     })
 
     return int(res["count"]) > 0
+
+
+def search_index_content(q: str, offset=0, limit=50) -> List[str]:
+    """Search document from index.
+
+    Returns
+    -------
+    list
+        a list of document id or empty.
+    """
+
+    if len(q) == 0:
+        return list()
+
+    es_host = app.config["ELASTICSEARCH_HOST"]
+    index = app.config["ELASTICSEARCH_INDEX"]
+
+    es = Elasticsearch(es_host)
+
+    q = q.replace("*", r"\*")
+    q = "*{}*".format(q)
+
+    res = es.search(index=index, body={
+        "from": offset, "size": limit,
+        "_source": ["_id"],
+        "query": {
+            "query_string": {
+                "query": q,
+                "fields": ["title", "content"]
+            }
+        }
+    })
+
+    result = list()
+    for doc in res['hits']['hits']:
+        id = str(doc["_id"])
+        result.append(id)
+
+    return result
 
 
 if __name__ == "__main__":
