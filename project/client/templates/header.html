@@ -12,11 +12,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
         </li>
-        {% if current_user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user.members') }}">Members</a>
-        </li>
-        {% endif %}
       </ul>
       <!-- Login/Logout -->
       <ul class="navbar-nav ml-auto">
