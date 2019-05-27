@@ -9,7 +9,6 @@ from flask import current_app as app
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import CombinedMultiDict
-from elasticsearch.exceptions import NotFoundError as ElasticsearchNotFoundError
 
 from project.server.models import Document
 from project.server.extractor.forms import UploadForm, SearchForm
@@ -98,19 +97,16 @@ def mydocuments():
 
     app.logger.debug("Found {} my documents".format(len(documents)))
 
-    try:
-        ids = [doc.id for doc in documents]
-        skills_dict = search_index_skills(ids)
-        for document in documents:
-            document.path = None  # hide
-            try:
-                document.skills = skills_dict[document.id]
-                if len(document.skills) == 0:
-                    document.skills = "Not found"
-            except KeyError:
-                document.skills = "Document's not indexed yet"
-    except ElasticsearchNotFoundError as ex:
-        app.logger.info("{}. Elasticsearch is not start or index has not created yet".format(ex))
+    ids = [doc.id for doc in documents]
+    skills_dict = search_index_skills(ids)
+    for document in documents:
+        document.path = None  # hide
+        try:
+            document.skills = skills_dict[document.id]
+            if len(document.skills) == 0:
+                document.skills = "Not found"
+        except KeyError:
+            document.skills = "Wait for index the document"
 
     return render_template("extractor/mydocuments.html", documents=documents,
                            form=form, total_documents=total_documents)
@@ -126,7 +122,7 @@ def download_my_document(id):
         path = document.path
         if not os.path.isabs(path):
             path = os.path.join(app.instance_path, path)
-        print('Path {}: {}'.format(document.title, path))
+        app.logger.debug('Path {}: {}'.format(document.title, path))
         if os.path.isfile(path):
             try:
                 return send_file(path, as_attachment=True)

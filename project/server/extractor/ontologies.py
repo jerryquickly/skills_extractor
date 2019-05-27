@@ -3,6 +3,8 @@
 from os import listdir
 from os.path import isfile, join
 
+from flask import current_app as app
+
 import rdflib
 from rdflib.namespace import OWL, RDF, RDFS, ClosedNamespace
 from rdflib import URIRef, Graph
@@ -47,14 +49,14 @@ def load_skill_nodes_from_rdf_resources(skills_resource_dir) -> Set[OntNode]:
             if isfile(f_path) and f_path.endswith(".ttl"):
                 ont_files.append(f_path)
     except FileNotFoundError:
-        print("Please copy *.ttl file to directory {}".format(skills_resource_dir))
+        app.logger.info("Please copy *.ttl file to directory {}".format(skills_resource_dir))
         raise
 
     if len(ont_files) == 0:
-        print("Ontology (.ttl) files is not found")
+        app.logger.debug("Ontology (.ttl) files is not found")
         return set()
 
-    print('Load ontology files: {}'.format(ont_files))
+    app.logger.debug('Load ontology files: {}'.format(ont_files))
 
     skills = set()
     for ont_file in ont_files:
@@ -106,7 +108,7 @@ def load_skill_nodes_from_rdf_resources(skills_resource_dir) -> Set[OntNode]:
                     try:
                         ontNode.difficulty = int(o2)
                     except ValueError:
-                        print("difficulty {} of {} not an int!".format(
+                        app.logger.debug("difficulty {} of {} not an int!".format(
                             o2, ontNode.name))
 
                 triples_keyword_only = graph.triples(
@@ -115,10 +117,10 @@ def load_skill_nodes_from_rdf_resources(skills_resource_dir) -> Set[OntNode]:
                     try:
                         ontNode.keyword_only = bool(o2)
                     except ValueError:
-                        print("o_keyword_only {} of {} not an bool!".format(
+                        app.logger.debug("o_keyword_only {} of {} not an bool!".format(
                             o2, ontNode.name))
         except BaseException:
-            print("Parse file {} exception".format(ont_file))
+            app.logger.debug("Parse file {} exception".format(ont_file))
             raise
 
     skill_nodes_cache = skills

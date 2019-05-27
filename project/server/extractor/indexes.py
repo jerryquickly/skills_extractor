@@ -4,6 +4,7 @@ from typing import List
 
 from flask import current_app as app
 from elasticsearch import Elasticsearch
+from elasticsearch.exceptions import NotFoundError as ElasticsearchNotFoundError
 from project.server.extractor.ontologies import load_skill_nodes_from_rdf_resources
 
 
@@ -25,7 +26,7 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
     skill_nodes = load_skill_nodes_from_rdf_resources(skills_resource_dir)
 
     if len(skill_nodes) == 0:
-        print("There is no skill to query")
+        app.logger.debug("There is no skill to query")
         return []
 
     result = set()
@@ -60,11 +61,11 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
 
         for doc in res['hits']['hits']:
             content_lower = doc['_source']['content'].lower()
-
             for skill in skills_page:
                 skill_node = skill_nodes_dict.get(skill)
                 regex = re.compile(r"\b{}\b".format(re.escape(skill.lower())))
                 n_match = len(regex.findall(content_lower))
+
                 if n_match > 0:
                     if skill_node is not None and skill_node.type == "NamedIndividual":
                         skill_extracts = [SkillExtract(
@@ -75,8 +76,11 @@ def extract_skills_in_document(document_id) -> List[SkillExtract]:
                         skill_extract = SkillExtract(name=skill, match_str=skill, n_match=n_match)
                         result.add(skill_extract)
 
-    print("Extract {} skills on document id {}. Skills: {}".format(
-        len(result), document_id, result))
+    result = sorted(result, key=lambda item: item.n_match, reverse=True)
+
+    skills_names = set(item.name for item in result)
+    app.logger.debug("Extract {} skills on document id {}. Skills: {}".format(
+        len(skills_names), document_id, skills_names))
 
     return result
 
@@ -157,25 +161,28 @@ def search_index_content(q: str, offset=0, limit=50) -> List[str]:
     index = app.config["ELASTICSEARCH_INDEX"]
 
     es = Elasticsearch(es_host)
+    result = list()
 
     q = q.replace("*", r"\*")
     q = "*{}*".format(q)
 
-    res = es.search(index=index, body={
-        "from": offset, "size": limit,
-        "_source": ["_id"],
-        "query": {
-            "query_string": {
-                "query": q,
-                "fields": ["title", "content"]
+    try:
+        res = es.search(index=index, body={
+            "from": offset, "size": limit,
+            "_source": ["_id"],
+            "query": {
+                "query_string": {
+                    "query": q,
+                    "fields": ["title", "content"]
+                }
             }
-        }
-    })
+        })
 
-    result = list()
-    for doc in res['hits']['hits']:
-        id = str(doc["_id"])
-        result.append(id)
+        for doc in res['hits']['hits']:
+            id = str(doc["_id"])
+            result.append(id)
+    except ElasticsearchNotFoundError as ex:
+        app.logger.warning("{}. Elasticsearch is not start or index has not created yet".format(ex))
 
     return result
 

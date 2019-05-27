@@ -1,12 +1,14 @@
 # project/server/extractor/services.py
 
 import os
+import re
 import json
 from typing import List
 
 import PyPDF2
 from flask import current_app as app
 from elasticsearch import Elasticsearch
+from elasticsearch.exceptions import NotFoundError as ElasticsearchNotFoundError
 
 from project.server import db
 from project.server.models import Document
@@ -60,7 +62,25 @@ def index_and_extract_skills(document_id):
     try:
         skill_extracts = extract_skills_in_document(document_id)
 
-        skills = list(set(skill_extract.name for skill_extract in skill_extracts))
+        # Sort match items by number of match
+        matches = list()
+        names = set(skill_extract.name for skill_extract in skill_extracts)
+        for name in names:
+            n_match = sum(item.n_match for item in skill_extracts if item.name == name)
+            regex = re.compile(r"\b{}\b".format(re.escape(name.lower())))
+            # Skill is more confident based on title
+            n_match += n_match * 2 * len(regex.findall(document.title.lower()))
+
+            matches.append({
+                "name": name,
+                "n_match": n_match
+            })
+
+        matches_sorted = sorted(matches, key=lambda item: item["n_match"], reverse=True)
+
+        skills = list(match["name"] for match in matches_sorted)
+        skills = skills[0:5]  # Top 5 match items only
+
         skill_extracts_list = [skill_extract.__dict__ for skill_extract in skill_extracts]
         update_data = {
             "skills": skills,
@@ -117,22 +137,26 @@ def search_index_skills(ids: List = None) -> dict:
     index = app.config["ELASTICSEARCH_INDEX"]
 
     es = Elasticsearch(es_host)
-    res = es.search(index=index, body={
-        "_source": ["skills", "skill_extracts"],
-        "size": len(ids),
-        "query": {
-            "terms": {"id": ids}
-        }
-    })
-
     result = dict()
-    for doc in res['hits']['hits']:
-        id = int(doc["_id"])
-        try:
-            skills = doc['_source']['skills']
-            result[id] = skills
-        except KeyError:
-            result[id] = "Skills've not extracted yet"
+
+    try:
+        res = es.search(index=index, body={
+            "_source": ["skills", "skill_extracts"],
+            "size": len(ids),
+            "query": {
+                "terms": {"id": ids}
+            }
+        })
+
+        for doc in res['hits']['hits']:
+            id = int(doc["_id"])
+            try:
+                skills = doc['_source']['skills']
+                result[id] = skills
+            except KeyError:
+                result[id] = "Skills've not extracted yet"
+    except ElasticsearchNotFoundError as ex:
+        app.logger.warning("{}. Elasticsearch is not start or index has not created yet".format(ex))
 
     return result
 
